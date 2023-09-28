@@ -1,0 +1,21 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #e7d8d8;
+}
+
+.Navbar{
+    font-family: 'Signika', sans-serif;
+    font-weight: bold;
+    background-color: #e7d8d8;
+}
+
+.homePage{
+    font-family: 'Signika', sans-serif;
+    background-color: #e7d8d8;
+}
