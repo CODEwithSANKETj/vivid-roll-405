@@ -4,12 +4,12 @@
   <img src="src/Images/logo.png" alt="PAALTOO Logo" background0color="white">
 </div>
 
-MediShine.com is a user-friendly Medicare website that empowers patients to conveniently book appointments with doctors from various medical categories. The platform also provides doctors with a streamlined dashboard to effectively manage appointments.
+Welcome to PAALTOO..., the ultimate destination for pet owners who want the best for their furry companions. Our user-friendly PetCare website is designed to make caring for your pets a breeze.
 
-### Deployed Link
+### Experience PAALTOO
 
 <div align="center">
-  <a href="https://medishine.vercel.app">Visit MediShine.com</a>
+  <a href="https://facebook.com">Visit PAALTOO.com</a>
 </div>
 
 ## Features
