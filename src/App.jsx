@@ -1,4 +1,5 @@
 
+
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 
@@ -9,6 +10,7 @@ function App() {
 
 
   </div>);
+
 }
 
 export default App;
