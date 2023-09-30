@@ -1,10 +1,14 @@
-import Service from "./Pages/Service";
 
+import Navbar from "./Components/Navbar";
+import Home from "./Pages/Home";
 
 function App() {
-  return <>
-     <Service/> 
-  </>;
+  return (<div className="App">
+    <Navbar />
+    <Home/>
+
+
+  </div>);
 }
 
 export default App;
