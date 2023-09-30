@@ -1,7 +1,7 @@
 # PAALTOO.com - Petcare Website
 
 <div align="center">
-  <img src="./src/Images/logo.png" alt="MediShine.com Logo">
+  <img src="src/Images/logo.png" alt="PAALTOO Logo">
 </div>
 
 MediShine.com is a user-friendly Medicare website that empowers patients to conveniently book appointments with doctors from various medical categories. The platform also provides doctors with a streamlined dashboard to effectively manage appointments.
