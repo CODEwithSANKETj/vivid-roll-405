@@ -14,38 +14,44 @@ Welcome to PAALTOO..., the ultimate destination for pet owners who want the best
 
 ## Features
 
-| Feature                           | Description                                                                                      |
-|-----------------------------------|--------------------------------------------------------------------------------------------------|
-| **Patient Registration and Login**| Patients can easily register and log in to access personalized features and book appointments. |
-| **Doctor Registration and Login** | Doctors can register and log in to their accounts to manage their appointments and view patient details. |
-| **Appointment Booking**           | Patients can browse through various medical categories and select preferred doctors for appointment booking. |
-| **Multiple Doctors per Category** | The platform offers multiple doctors under each medical category, providing patients with options and flexibility. |
-| **Searching and Sorting**         | Patients can use the search functionality to find doctors by name, specialty, or other criteria. Additionally, they can sort the list of doctors based on fees|
-| **Patient Dashboard**             | Patients have access to a personalized dashboard where they can manage their appointments and view medical history. |
-| **Beautiful Animations**          | The user experience is enhanced with elegant and smooth animations throughout the website, creating an engaging and delightful interface. |
+| Feature                   | Description                                                                              |
+|---------------------------|------------------------------------------------------------------------------------------|
+| **Pet Grooming**          | Pamper your beloved pets with our expert pet grooming services, leaving them fresh and stylish. |
+| **Veterinary Care**       | Trust in our experienced veterinarians to provide top-quality care for your furry companions. |
+| **Pet Sitting**           | Enjoy peace of mind knowing your pets are in safe hands with our reliable pet sitting services. |
+| **Healthy Meals Info**    | Access valuable information and guidance on nutrition to keep your pets healthy and happy. |
+
+At PAALTOO, we're committed to enhancing the well-being of your pets with a range of services designed to cater to their unique needs. Whether it's grooming, veterinary care, pet sitting, or nutritional advice, we've got you covered. Your pets' happiness and health are our top priorities!
+
 
 ## Technologies Used
 
 - React: Frontend library for building the user interface.
 - Node.js: Backend runtime environment for handling server-side operations.
+- Express.js
+- MongoDB - Database for storing realtime data
 - CSS
 - ChakraUI
-- RESTful API: To handle communication between frontend and backend.
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/mrsaurabhmaske/resolute-mountain-5021.git`
-2. Install dependencies: `cd resolute-mountain-5021 && npm install`
+1. Clone the repository: `repo URL`
+2. Install dependencies: `cd vivid-roll-405 && npm install`
 3. Set up the MongoDB connection: Create a `.env` file with your MongoDB connection URI.
-4. Start the development server: `npm run start`
+4. Start the development server: `npm run dev`
 
 ## Contributions
 
-Contributions to MediShine.com are welcome! If you have any ideas or improvements, feel free to submit a pull request.
+Contributions to PAALTOO.com are welcome! If you have any ideas or improvements, feel free to submit a pull request.
 
 ## Contact
 
-For any inquiries or support, you can reach me at [saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).
+For any inquiries or support, you can reach us at below emails:
+[saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).
+[saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).//Sanket's Email
+[saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).//Akshay
+[saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).//Chetan
+ 
 
 ---
 
