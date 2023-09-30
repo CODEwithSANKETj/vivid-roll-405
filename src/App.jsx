@@ -1,10 +1,16 @@
-import Product_details from "./Components/Product_details";
-import Cart from "./Pages/Cart";
+
+
+import Navbar from "./Components/Navbar";
+import Home from "./Pages/Home";
 
 function App() {
-  return <>
-   <Cart/>
-  </>;
+  return (<div className="App">
+    <Navbar />
+    <Home/>
+
+
+  </div>);
+
 }
 
 export default App;
