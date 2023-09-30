@@ -1,11 +1,18 @@
-import Product_details from "./Components/Product_details";
-import Cart from "./Pages/Cart";
-import Product_list from "./Pages/Product_list";
+
+
+
+import Navbar from "./Components/Navbar";
+import Home from "./Pages/Home";
 
 function App() {
-  return <>
-   <Product_list/>
-  </>;
+  return (<div className="App">
+    <Navbar />
+    <Home/>
+
+
+  </div>);
+
+
 }
 
 export default App;
