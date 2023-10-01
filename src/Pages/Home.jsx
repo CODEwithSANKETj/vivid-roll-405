@@ -33,7 +33,7 @@ function Home() {
       </div>
 
       {/*---------Services Section Start----------*/}
-      <div className="servicesSection">
+      <div  className="servicesSection">
         <Heading as="h1" size={"sm"} color={"red"}>
           Care your your Pets
         </Heading>
