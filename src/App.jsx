@@ -1,15 +1,13 @@
 
-
-
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
-import Service from "./Pages/Service";
+import Service_provider from "./Pages/Service_provider"
 
 function App() {
   return (<div className="App">
     <Navbar />
     {/* <Home/> */}
-    <Service/>
+    <Service_provider/>
 
 
   </div>);

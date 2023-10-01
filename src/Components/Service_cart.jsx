@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardBody,Image,Stack,Heading,Text,Button, CardFooter } from '@chakra-ui/react'
 import "../CSS/service.css";
+import axios from 'axios';
 
-const Service = () => {
+const Service_cart = ({title,id,image,details,price}) => {
+
+
+
   return (
-    <div className='mainPage'>
-      <div className='service-img'>
+    <div >
+      {/* <div className='service-img'>
         <img src='https://www.fetchpetcare.com/wp-content/uploads/2023/08/hero.png'  />
       </div>
       <div>
           <Heading className='heading' >Pet Care Services</Heading>
           <Text id='main_text' py='2' fontSize='xl'>At PAALTOO, we serve pets of every type, age, and phase of life because we truly love animals. We show it with every belly rub, long walk, scratch behind the ear, and treat we give. We’d love to be your trusted sidekick for a healthy and happy pet because we know we can deliver trusted, quality care and a professional, stress-free experience for you.</Text>
-      </div>
+      </div> */}
         
               <Card id='service_card'
                 direction={{ base: 'column', sm: 'row' }}
@@ -22,7 +26,7 @@ const Service = () => {
             objectFit='cover'
             // maxW={{ base: '50%', sm: '500px' }}
             width={500}
-            src='https://www.fetchpetcare.com/wp-content/uploads/2023/04/Img1-4.jpg'
+            src={image}
             alt='Caffe Latte'
           />
 
@@ -43,7 +47,7 @@ const Service = () => {
           </Stack>
               </Card>
 
-              <Card id='service_card'
+              {/* <Card id='service_card'
                 direction={{ base: 'column', sm: 'row' }}
                 overflow='hidden'
                 variant='outline'
@@ -131,9 +135,9 @@ const Service = () => {
               </Button>
             </CardFooter>
           </Stack>  
-              </Card>
+              </Card> */}
     </div>
   )
 }
 
-export default Service
+export default Service_cart
