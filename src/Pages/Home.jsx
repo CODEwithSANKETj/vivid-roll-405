@@ -19,6 +19,7 @@ import { Button, Heading } from "@chakra-ui/react";
 import Footer from "../Components/Footer";
 function Home() {
   return (
+
     <>
       <HOME className="homePage">
         {/*  --------Hero Section Start-------- */}
@@ -42,6 +43,7 @@ function Home() {
                 Book Appointment
               </Button>
             </div>
+
           </div>
 
           <div className="heroRight">
