@@ -1,37 +1,23 @@
 import styled from "styled-components";
-
+import React, { useState } from "react";
 const LoginSignup = () => {
-  const signUpButton = document.getElementById("signUp");
-  const signInButton = document.getElementById("signIn");
-  const container = document.getElementById("container");
+  const [isSignUpActive, setIsSignUpActive] = useState(false);
 
   const handleSignUpClick = () => {
-    container.classList.add("right-panel-active");
+    setIsSignUpActive(true);
   };
 
   const handleSignInClick = () => {
-    container.classList.remove("right-panel-active");
+    setIsSignUpActive(false);
   };
 
-  signUpButton.addEventListener("click", handleSignUpClick);
-  signInButton.addEventListener("click", handleSignInClick);
   return (
     <DIV>
-      <div className="container" id="container">
+      <div
+        className={`container ${isSignUpActive ? "right-panel-active" : ""}`}>
         <div className="form-container sign-up-container">
           <form action="#">
             <h1>Create Account</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in" />
-              </a>
-            </div> */}
             <span>or use your email for registration</span>
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
@@ -42,17 +28,6 @@ const LoginSignup = () => {
         <div className="form-container sign-in-container">
           <form action="#">
             <h1>Sign in</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in" />
-              </a>
-            </div> */}
             <span>or use your account</span>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
@@ -62,19 +37,26 @@ const LoginSignup = () => {
         </div>
         <div className="overlay-container">
           <div className="overlay">
-            <div className="overlay-panel overlay-left">
+            <div
+              className={`overlay-panel overlay-left ${
+                isSignUpActive ? "overlay-left-active" : ""
+              }`}>
               <h1>Welcome Back!</h1>
               <p>
-                To keep connected with us please login with your personal info
+                To keep connected with us, please login with your personal info
               </p>
-              <button className="ghost" id="signIn">
+              <button className="ghost" onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
-            <div className="overlay-panel overlay-right">
+            <div
+              className={`overlay-panel overlay-right ${
+                isSignUpActive ? "overlay-right-active" : ""
+              }`}
+            >
               <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button className="ghost" id="signUp">
+              <p>Enter your personal details and start your journey with us</p>
+              <button className="ghost" onClick={handleSignUpClick}>
                 Sign Up
               </button>
             </div>
@@ -86,6 +68,7 @@ const LoginSignup = () => {
 };
 
 export default LoginSignup;
+
 
 const DIV = styled.div`
   /* @import url("@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');"); */
