@@ -23,7 +23,9 @@ function Navbar() {
         </div>
 
         <div className="logoSection" onClick={scrollToTop}>
-          <img src={logo} alt="PAALTOO Logo" />
+          <ClickLink to={"/"}>
+            <img src={logo} alt="PAALTOO Logo" />
+          </ClickLink>
         </div>
 
         <div className="cartContainerMobile">
@@ -93,8 +95,11 @@ function Navbar() {
 
       <div className="Navbar">
         <div className="logoSection" onClick={scrollToTop}>
-          <img src={logo} alt="PAALTOO Logo" />
+          <ClickLink to={"/"}>
+            <img src={logo} alt="PAALTOO Logo" />{" "}
+          </ClickLink>
         </div>
+
         <div className="linksSection">
           <Link
             to="servicesSectionContainer"

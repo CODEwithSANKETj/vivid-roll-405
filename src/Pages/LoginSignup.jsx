@@ -1,7 +1,37 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login, signup } from "../Redux/Auth_Reducer/action";
+import { useNavigate } from "react-router-dom";
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [signupdata, setsignupData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [logindata, setlogindata] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handelsignup = (e) => {
+    e.preventDefault();
+    console.log(signupdata);
+    dispatch(signup(signupdata));
+    navigate("/");
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(logindata);
+    dispatch(login(logindata));
+    navigate("/");
+  };
 
   const handleSignUpClick = () => {
     setIsSignUpActive(true);
@@ -17,21 +47,51 @@ const LoginSignup = () => {
         className={`container ${isSignUpActive ? "right-panel-active" : ""}`}
       >
         <div className="form-container sign-up-container">
-          <form action="#">
+          <form action="#" onSubmit={handelsignup}>
             <h1>Create Account</h1>
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(e) =>
+                setsignupData({ ...signupdata, name: e.target.value })
+              }
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) =>
+                setsignupData({ ...signupdata, email: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) =>
+                setsignupData({ ...signupdata, password: e.target.value })
+              }
+            />
             <button>Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
-          <form action="#">
+          <form action="#" onSubmit={handleLogin}>
             <h1>Sign in</h1>
             <span>or use your account</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) =>
+                setlogindata({ ...logindata, email: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) =>
+                setlogindata({ ...logindata, password: e.target.value })
+              }
+            />
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
           </form>
