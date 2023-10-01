@@ -5,7 +5,7 @@ import wishlisticon from "../Images/wishlist-icon.gif";
 import { NavLink } from "react-router-dom";
 import { Link, animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
-
+import { Link as ClickLink} from 'react-router-dom'
 function Navbar() {
   const scrollToTop = () => {
     scroll.scrollToTop();
@@ -42,7 +42,8 @@ function Navbar() {
       </div>
 
       <div className="nav-buttons">
-        <Button colorScheme="orange">Login</Button>
+        
+        <ClickLink to='/login'><Button colorScheme="orange">Login</Button></ClickLink> 
         {false && <Button colorScheme="red">Logout</Button>}
       </div>
     </NAVBAR>
