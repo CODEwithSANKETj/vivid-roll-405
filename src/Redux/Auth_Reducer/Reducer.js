@@ -6,7 +6,7 @@ const initilstate = {
   error: "",
 };
 
-export const reducer = (state = initilstate, action) => {
+export const Reducer = (state = initilstate, action) => {
   switch (action.types) {
     case "LOGIN_REQUEST":
       return { ...state, isLoading: true };
