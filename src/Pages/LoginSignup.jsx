@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import { useState } from "react";
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
 
@@ -14,7 +14,8 @@ const LoginSignup = () => {
   return (
     <DIV>
       <div
-        className={`container ${isSignUpActive ? "right-panel-active" : ""}`}>
+        className={`container ${isSignUpActive ? "right-panel-active" : ""}`}
+      >
         <div className="form-container sign-up-container">
           <form action="#">
             <h1>Create Account</h1>
@@ -40,7 +41,8 @@ const LoginSignup = () => {
             <div
               className={`overlay-panel overlay-left ${
                 isSignUpActive ? "overlay-left-active" : ""
-              }`}>
+              }`}
+            >
               <h1>Welcome Back!</h1>
               <p>
                 To keep connected with us, please login with your personal info
@@ -68,7 +70,6 @@ const LoginSignup = () => {
 };
 
 export default LoginSignup;
-
 
 const DIV = styled.div`
   /* @import url("@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');"); */

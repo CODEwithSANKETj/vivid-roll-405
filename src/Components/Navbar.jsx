@@ -5,13 +5,9 @@ import wishlisticon from "../Images/wishlist-icon.gif";
 import { NavLink } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link, animateScroll as scroll } from "react-scroll";
-
-import styled from "styled-components";
-import { Link as ClickLink} from 'react-router-dom'
-
 import "./Navbar.css";
+import { Link as ClickLink } from "react-router-dom";
 import { useState } from "react";
-
 
 function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
@@ -29,37 +25,6 @@ function Navbar() {
         <div className="logoSection" onClick={scrollToTop}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
-
-      </div>
-
-      <div className="nav-buttons">
-        
-        <ClickLink to='/login'><Button colorScheme="orange">Login</Button></ClickLink> 
-        {false && <Button colorScheme="red">Logout</Button>}
-      </div>
-    </NAVBAR>
-  );
-}
-
-export default Navbar;
-
-const NAVBAR = styled.div`
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5% 0px 5%;
-  max-height: 200px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  overflow: hidden;
-
-  .logoSection {
-    width: 15%;
-    cursor: pointer;
-  }
-
 
         <div className="cartContainerMobile">
           <div className="shoppingcarticon">
@@ -101,9 +66,12 @@ const NAVBAR = styled.div`
             Contact
           </Link>
           <NavLink to={"/allproducts"}>Products</NavLink>
-          <Button colorScheme="orange" className="loginBtns">
-            Login
-          </Button>
+          <ClickLink to={"/login"}>
+            <Button colorScheme="orange" className="loginBtns">
+              Login
+            </Button>
+          </ClickLink>
+
           {false && (
             <Button colorScheme="red" className="loginBtns">
               Logout
@@ -153,9 +121,11 @@ const NAVBAR = styled.div`
             Contact
           </Link>
           <NavLink to="/allproducts">Products</NavLink>
-          <Button colorScheme="orange" className="loginBtns">
-            Login
-          </Button>
+          <ClickLink to={"/login"}>
+            <Button colorScheme="orange" className="loginBtns">
+              Login
+            </Button>
+          </ClickLink>
           {false && (
             <Button colorScheme="red" className="loginBtns">
               Logout
@@ -176,7 +146,9 @@ const NAVBAR = styled.div`
         </div>
 
         <div className="nav-buttons">
-          <Button colorScheme="orange">Login</Button>
+          <ClickLink to={"/login"}>
+            <Button colorScheme="orange">Login</Button>
+          </ClickLink>
           {false && <Button colorScheme="red">Logout</Button>}
         </div>
       </div>
