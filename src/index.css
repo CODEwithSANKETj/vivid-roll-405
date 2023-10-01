@@ -8,15 +8,6 @@
 
 body{
     background-color: #e7d8d8;
+    width: 100%;
 }
 
-.Navbar{
-    font-family: 'Signika', sans-serif;
-    font-weight: bold;
-    background-color: #f8e7e7;
-}
-
-.homePage{
-    font-family: 'Signika', sans-serif;
-    background-color: #f8e7e7;
-}

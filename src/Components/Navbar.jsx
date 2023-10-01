@@ -3,42 +3,33 @@ import logo from "../Images/logo.png";
 import shoppingcart from "../Images/shopping-cart.gif";
 import wishlisticon from "../Images/wishlist-icon.gif";
 import { NavLink } from "react-router-dom";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link, animateScroll as scroll } from "react-scroll";
+
 import styled from "styled-components";
 import { Link as ClickLink} from 'react-router-dom'
+
+import "./Navbar.css";
+import { useState } from "react";
+
+
 function Navbar() {
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
 
   return (
-    <NAVBAR className="Navbar">
-      <div className="logoSection" onClick={scrollToTop}>
-        <img src={logo} alt="PAALTOO Logo" />
-      </div>
-      <div className="linksSection">
-        <Link to="servicesSection" spy={true} smooth={true} duration={500}>
-          Services
-        </Link>
-        <Link to="aboutSection" spy={true} smooth={true} duration={500}>
-          About
-        </Link>
-        <Link to="groomersSection" spy={true} smooth={true} duration={500}>
-          Contact
-        </Link>
-        <NavLink to="/allproducts">Products</NavLink>
-      </div>
-
-      <div className="cartContainer">
-        <div className="shoppingcarticon">
-          <div className="count">2</div>
-          <img src={shoppingcart} alt="shoppingcarticon" />
+    <>
+      <div className="MobileNavbar">
+        <div className="hamburger">
+          <HamburgerIcon onClick={() => setIsHamburgerOpen(true)} />
         </div>
 
-        <div className="wishlisticon">
-          <div className="count">2</div>
-          <img src={wishlisticon} alt="wishlisticon" />
+        <div className="logoSection" onClick={scrollToTop}>
+          <img src={logo} alt="PAALTOO Logo" />
         </div>
+
       </div>
 
       <div className="nav-buttons">
@@ -69,58 +60,128 @@ const NAVBAR = styled.div`
     cursor: pointer;
   }
 
-  .logoSection img {
-    width: 100%;
-  }
 
-  .linksSection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 40%;
-    padding: 0 5%;
-    font-size: 23px;
-  }
+        <div className="cartContainerMobile">
+          <div className="shoppingcarticon">
+            <div className="count">2</div>
+            <img src={shoppingcart} alt="shoppingcarticon" />
+          </div>
 
-  .linksSection a {
-    text-decoration: none;
-    color: #5e1b1b;
-    cursor: pointer;
-  }
+          <div className="wishlisticon">
+            <div className="count">2</div>
+            <img src={wishlisticon} alt="wishlisticon" />
+          </div>
+        </div>
 
-  .cartContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 10%;
-    gap: 30px;
-  }
+        <div
+          className={isHamburgerOpen ? "hamburgerMenu" : "hiddenHamburgerMenu"}
+        >
+          <Link
+            to="servicesSectionContainer"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Services
+          </Link>
+          <Link
+            to="aboutSectionContainer"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            About
+          </Link>
+          <Link
+            to="contactSectionContainer"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Contact
+          </Link>
+          <NavLink to={"/allproducts"}>Products</NavLink>
+          <Button colorScheme="orange" className="loginBtns">
+            Login
+          </Button>
+          {false && (
+            <Button colorScheme="red" className="loginBtns">
+              Logout
+            </Button>
+          )}
+          <Button
+            colorScheme="red"
+            borderRadius={"50%"}
+            w={"50px"}
+            h={"50px"}
+            onClick={() => {
+              setIsHamburgerOpen(false);
+            }}
+          >
+            X
+          </Button>
+        </div>
+      </div>
 
-  .wishlisticon,
-  .shoppingcarticon {
-    width: 40%;
-    padding: 15px;
-  }
+      <div className="Navbar">
+        <div className="logoSection" onClick={scrollToTop}>
+          <img src={logo} alt="PAALTOO Logo" />
+        </div>
+        <div className="linksSection">
+          <Link
+            to="servicesSectionContainer"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Services
+          </Link>
+          <Link
+            to="aboutSectionContainer"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            About
+          </Link>
+          <Link
+            to="contactSectionContainer"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Contact
+          </Link>
+          <NavLink to="/allproducts">Products</NavLink>
+          <Button colorScheme="orange" className="loginBtns">
+            Login
+          </Button>
+          {false && (
+            <Button colorScheme="red" className="loginBtns">
+              Logout
+            </Button>
+          )}
+        </div>
 
-  .shoppingcarticon img {
-    width: 100%;
-  }
+        <div className="cartContainer">
+          <div className="shoppingcarticon">
+            <div className="count">2</div>
+            <img src={shoppingcart} alt="shoppingcarticon" />
+          </div>
 
-  .wishlisticon img {
-    width: 100%;
-    mix-blend-mode: color-burn;
-  }
+          <div className="wishlisticon">
+            <div className="count">2</div>
+            <img src={wishlisticon} alt="wishlisticon" />
+          </div>
+        </div>
 
-  .count {
-    position: relative;
-    top: 0.2rem;
-    left: 2rem;
-    background-color: #ec2cd2;
-    width: 1.3rem;
-    height: 1.3rem;
-    text-align: center;
-    border-radius: 50%;
-    color: white;
-  }
-`;
+        <div className="nav-buttons">
+          <Button colorScheme="orange">Login</Button>
+          {false && <Button colorScheme="red">Logout</Button>}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Navbar;
