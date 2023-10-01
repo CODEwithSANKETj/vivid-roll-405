@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardBody,Image,Stack,Heading,Text,Button, CardFooter } from '@chakra-ui/react'
- 
+import "./service.css";
 
 const Service = () => {
   return (
@@ -8,16 +8,17 @@ const Service = () => {
       <div className='service-img'>
         <img src='https://www.fetchpetcare.com/wp-content/uploads/2023/04/dogwalking.jpg'  />
       </div>
-      <div>
-          <h1>Pet Care Services</h1>
+      <div className='intro'>
+          <h1 id='title'>Pet Care Services</h1>
           <p>At PAALTOO, we serve pets of every type, age, and phase of life because we truly love animals. We show it with every belly rub, long walk, scratch behind the ear, and treat we give. We’d love to be your trusted sidekick for a healthy and happy pet because we know we can deliver trusted, quality care and a professional, stress-free experience for you.</p>
       </div>
         
-              <Card
+              <Card 
+                className='card'
                 direction={{ base: 'column', sm: 'row' }}
                 overflow='hidden'
                 variant='outline'
-        >
+             >
           <Image
             objectFit='cover'
             // maxW={{ base: '5%', sm: '50px' }}
@@ -44,6 +45,7 @@ const Service = () => {
               </Card>
 
               <Card
+               className='card'
                 direction={{ base: 'column', sm: 'row' }}
                 overflow='hidden'
                 variant='outline'
@@ -75,6 +77,7 @@ const Service = () => {
               </Card>
 
               <Card
+               className='card'
                 direction={{ base: 'column', sm: 'row' }}
                 overflow='hidden'
                 variant='outline'
@@ -106,6 +109,7 @@ const Service = () => {
               </Card>
 
               <Card
+               className='card'
                 direction={{ base: 'column', sm: 'row' }}
                 overflow='hidden'
                 variant='outline'
