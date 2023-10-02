@@ -2,12 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios'
-// 
+import { Spinner } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import store from '../Redux/store';
+import { addToCart } from '../Redux/Prod_redux/actions';
 function ProductDetails() {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const {id} = useParams();
   const [data,setdata] = useState(null)
-
+  const [quantity,setquantiy] = useState(1)
+  const dispatch = useDispatch()
+  const cartData = useSelector((store)=>store.cart);
+  console.log(cartData);
+  function Addtocart(e,item){
+    e.preventDefault()
+    dispatch(addToCart(item))
+    //console.log('Product added',item);
+  }
   useEffect(()=>{
     axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/`)
     .then((res)=>{
@@ -28,31 +39,49 @@ function ProductDetails() {
     // Set the zoom position based on cursor position
     setZoomPosition({ x, y });
   };
+  function set(value){
+    //console.log('clicked');
+    setquantiy(quantity+value)
+  }
+  //console.log(quantity);
   return (
+    
     <Div>
       <Left_div>
        
         <MainImageContainer >
           
-        <Img src='https://pawsindia.com/cdn/shop/products/1_ee00a414-7e44-4ab6-8129-aadda2f19498.png?v=1685797240' />
+        {data ? <Img src={`${data.image}`}/>: <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/>}
           </MainImageContainer>
           
-        
+          
       </Left_div>
       <div>
-        <Right_div>
-          <ProductTitle>Royal Canin - Shih Tzu Adult Dry Food</ProductTitle>
-          <Price>Rs. 300</Price>
-          <Desc>Suitable for dogs over 10 months old, ROYAL CANIN® Shih Tzu Adult is specially formulated with all the nutritional needs of your adult Shih Tzu in mind.</Desc>
+        {!data ? <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/> :<Right_div>
+          <ProductTitle>{data.title}</ProductTitle>
+          <Price>Rs. {data.price}</Price>
+          <Desc>{data.details}</Desc>
           <p>Quantity:</p>
           <QuantityContainer>
-            <QuantityButton >-</QuantityButton>
-            <QuantityDisplay>1</QuantityDisplay>
-            <QuantityButton >+</QuantityButton>
+            <QuantityButton disabled={quantity === 1} onClick={()=>set(-1)} >-</QuantityButton>
+            <QuantityDisplay>{quantity}</QuantityDisplay>
+            <QuantityButton disabled={quantity === 4} onClick={()=>set(1)} >+</QuantityButton>
           </QuantityContainer>
           <ButtonsContainer>
             <BuyNowButton>Buy Now</BuyNowButton>
-            <AddToCartButton>Add to Cart</AddToCartButton>
+            <AddToCartButton onClick={(e)=>Addtocart(e,data)}>Add to Cart</AddToCartButton>
           </ButtonsContainer>
           <Logo_Container>
             <img src="https://cdn.shopify.com/s/files/1/1199/8502/files/secured-payment-icon.png?v=1666161113" alt="" />
@@ -67,7 +96,7 @@ function ProductDetails() {
             <p>COD Available</p>
             <p>Easy return</p>
           </Logo_text>
-        </Right_div>
+        </Right_div>}
       </div>
     </Div>
   );

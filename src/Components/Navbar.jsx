@@ -5,22 +5,60 @@ import wishlisticon from "../Images/wishlist-icon.gif";
 import { NavLink } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link, animateScroll as scroll } from "react-scroll";
+
+import styled from "styled-components";
+import { Link as ClickLink} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import store from "../Redux/store";
+
 import "./Navbar.css";
-import { Link as ClickLink } from "react-router-dom";
 import { useState } from "react";
+
 
 function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
+  //////cart value///////
+  const dispatch = useDispatch()
+  const cartData = useSelector((store)=>store.cart);
+  console.log(cartData.cart);
+  ///////////////////////
 
   return (
-    <>
+
+    <NAVBAR className="Navbar">
+      <div className="logoSection" onClick={scrollToTop}>
+        <img src={logo} alt="PAALTOO Logo" />
+      </div>
+      <div className="linksSection">
+        <Link to="servicesSection" spy={true} smooth={true} duration={500}>
+          Services
+        </Link>
+        <Link to="aboutSection" spy={true} smooth={true} duration={500}>
+          About
+        </Link>
+        <Link to="groomersSection" spy={true} smooth={true} duration={500}>
+          Contact
+        </Link>
+        <NavLink to="/allproducts">Products</NavLink>
+      </div>
+
+      <div className="cartContainer">
+        <ClickLink to='/cart'>
+          <div className="shoppingcarticon">
+            <div className="count">{cartData.cart.length}</div>
+            <img src={shoppingcart} alt="shoppingcarticon" />
+          </div>
+        </ClickLink>
+
+    
       <div className="MobileNavbar">
         <div className="hamburger">
           <HamburgerIcon onClick={() => setIsHamburgerOpen(true)} />
         </div>
+
 
         <div className="logoSection" onClick={scrollToTop}>
           <ClickLink to={"/"}>
@@ -28,11 +66,7 @@ function Navbar() {
           </ClickLink>
         </div>
 
-        <div className="cartContainerMobile">
-          <div className="shoppingcarticon">
-            <div className="count">2</div>
-            <img src={shoppingcart} alt="shoppingcarticon" />
-          </div>
+      
 
           <div className="wishlisticon">
             <div className="count">2</div>

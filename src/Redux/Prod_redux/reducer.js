@@ -45,14 +45,16 @@ export  function Reducer(state = init, action) {
 
     case DELETE_FROM_CART:
       // Find the item in the cart by its id
-      const itemToRemove = state.cart.find(item => item.id === payload.id);
-
+     // console.log(state.cart);
+      //console.log(payload.id);
+      const itemToRemove = state.cart.find(item => item._id === payload.id._id);
+      
       if (itemToRemove) {
         // Calculate the new total amount after removing the item
         const newTotalAmount = state.total_amount - (itemToRemove.price * itemToRemove.quantity);
 
         // Filter out the item from the cart
-        const updatedCart = state.cart.filter(item => item.id !== payload.id);
+        const updatedCart = state.cart.filter(item => item._id !== payload.id._id);
 
         return {
           ...state,
