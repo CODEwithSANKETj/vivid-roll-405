@@ -1,0 +1,59 @@
+.mainContainer {
+  width: 60%;
+  margin: auto;
+  padding: 20px;
+}
+.adminOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  background-color: #ffc1c1;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.searchbarSection {
+  padding: 5px;
+  width: 50%;
+}
+
+.searchbarSection input {
+  padding: 5px;
+  border-radius: 20px;
+  width: 100%;
+  border: none;
+  text-align: center;
+}
+
+.sortingSection select {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff7f7;
+}
+
+table {
+  background-color: grey;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid black;
+}
+
+td,
+th {
+  border: 1px solid grey;
+}
+
+td {
+  padding: 10px;
+  background-color: #f8dcdc;
+}
+
+th {
+  padding: 20px;
+  background-color: #d6a4a4;
+}
