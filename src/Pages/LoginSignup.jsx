@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, signup } from "../Redux/Auth_Reducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Toast } from "bootstrap";
+import { useToast } from "@chakra-ui/react";
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  
+  const toast = useToast();
+
+  const name = useSelector((store) => store.auth.name);
 
   const [signupdata, setsignupData] = useState({
     name: "",
@@ -24,19 +28,42 @@ const LoginSignup = () => {
   const handelsignup = (e) => {
     e.preventDefault();
     console.log(signupdata);
-    dispatch(signup(signupdata));
-    navigate("/");
+    const auth = dispatch(signup(signupdata));
+    if (auth) {
+      navigate("/");
+    }
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(logindata);
-    dispatch(login(logindata));
-    if (location.state && location.state.from) {
-      navigate(location.state.from);
+    // console.log(logindata);
+    if (logindata.email == "admin@gmail.com") {
+      if (logindata.password == "avengers") {
+        navigate("/admin");
+      } else {
+        toast({
+          title: "Admin Login Failed",
+          description: "Wrong Password",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
     } else {
-      // If there's no `from` location, you can provide a default redirect
-      navigate('/');
+      dispatch(login(logindata));
+      if (location.state && location.state.from) {
+        navigate(location.state.from);
+      } else {
+        // If there's no `from` location, you can provide a default redirect
+        toast({
+          title: `Welcome Back ${name}`,
+          description: "Login successfully.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        navigate("/");
+      }
     }
   };
 
