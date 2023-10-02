@@ -6,7 +6,8 @@ import LoginSignup from './LoginSignup'
 import Home from './Home'
 import Product_list from './Product_list'
 import Cart from './Cart'
-
+import Service from './Service'
+import { Paymentpage } from './PaymentPage'
 
 function MainRoutes() {
   return (
@@ -17,6 +18,8 @@ function MainRoutes() {
       <Route path='/login' element={<LoginSignup/>}/>
       <Route path='/allproducts' element={<Product_list/>}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/services/:id' element={<Service/>}/>
+      <Route path='/checkout' element={<Paymentpage/>}/>
 
 
     </Routes>

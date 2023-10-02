@@ -7,6 +7,7 @@ export default function Cart() {
   const cartData = useSelector((store)=>store.cart);
   console.log(cartData.cart);
     let data = cartData.cart
+  
   return (
     <div className='App'>
     
@@ -15,22 +16,10 @@ export default function Cart() {
         <header>
         
         
-        
+        <h5>HOME - SHOPPING CART</h5>
       
         
-        <div class="bg-primary">
-          <div class="container py-4">
-            
-            <nav class="d-flex">
-              <h6 class="mb-0">
-                <a href="" class="text-white-50">Home</a>
-                <span class="text-white-50 mx-2"> &gt; </span>
-                <a href="" class="text-white"><u>Shopping cart</u></a>
-              </h6>
-            </nav>
-            
-          </div>
-        </div>
+        
         
       </header>
       
