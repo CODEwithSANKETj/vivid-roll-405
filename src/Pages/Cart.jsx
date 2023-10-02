@@ -2,27 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../CSS/Cart.css'
 import Cart_item from '../Components/Cart_item';
 import store from '../Redux/store';
+import { useNavigate } from 'react-router-dom';
 export default function Cart() {
   const dispatch = useDispatch()
   const cartData = useSelector((store)=>store.cart);
+  const navigate = useNavigate()
   console.log(cartData.cart);
     let data = cartData.cart
   
   return (
     <div className='App'>
-    
-   
-     
-        <header>
-        
-        
-        <h5>HOME - SHOPPING CART</h5>
-      
-        
-        
-        
-      </header>
-      
       
       <section class="bg-light my-5">
         <div class="container">
@@ -84,7 +73,7 @@ export default function Cart() {
                   </div>
       
                   <div class="mt-3">
-                    <a  href="#" class="btn btn-success w-100 shadow-0 mb-2" id='payment'> Make Purchase </a>
+                    <a onClick={()=>navigate('/checkout')}  href="#" class="btn btn-success w-100 shadow-0 mb-2" id='payment'> Make Purchase </a>
                     <a href="#" class="btn btn-light w-100 border mt-2"> Back to shop </a>
                   </div>
                 </div>

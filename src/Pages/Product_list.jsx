@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
+import { useToast } from '@chakra-ui/react';
+
 import dog_pic from '../Images/Dog.png'
 import bird_pic from '../Images/bird.png'
 import toys_pic from '../Images/toys.png'
@@ -12,6 +14,8 @@ import store from '../Redux/store'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Skeleton, Spinner } from '@chakra-ui/react'
 function Product_list() {
+  const toast = useToast();
+
     let [data,setdata] = useState([])
     let [refresh,setrefresh] = useState(true)
     let [isloading,setisloading] = useState(false)
@@ -45,8 +49,30 @@ function Product_list() {
   const endIndex = startIndex + itemsPerPage;
     function addtocart(e,item){
       e.preventDefault()
-      dispatch(addToCart(item))
-      //console.log('Product added',item);
+      // Check if the product already exists in the cart
+      //console.log(cartData.cart,'data');
+    const productExists = cartData.cart.some((cartItem) => cartItem._id === item._id);
+
+    if (productExists) {
+      // Show a toast notification indicating that the product already exists
+      toast({
+        title: 'Product already in cart',
+        description: 'This product is already in your cart.',
+        status: 'info', // You can choose the toast status
+        duration: 3000, // Duration for the toast
+        isClosable: true,
+      });
+    } else {
+      // If the product doesn't exist, add it to the cart
+      dispatch(addToCart(item));
+      toast({
+        title: 'Product added to cart', // Set the title to "Product added to cart"
+        status: 'success', // Use 'success' status for a green color
+        duration: 3000, // Duration for the toast
+        isClosable: true,
+      });
+      // Optionally, you can show a success toast here if needed
+    }
     }
     function filter(e){
       e.preventDefault()
@@ -95,7 +121,7 @@ function Product_list() {
         queryParams.append('category', category);
       }
       const queryString = queryParams.toString();
-      console.log(queryString);
+      //console.log(queryString);
         axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/?${queryString}`)
         .then((res)=>{
           setisloading(false)
