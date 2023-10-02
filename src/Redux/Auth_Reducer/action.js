@@ -11,12 +11,12 @@ export const login = (details) => async (dispatch) => {
     if (res.error) {
       throw new Error(res.error);
     }
-    console.log(res)
+    console.log(res);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
-    alert("Login Successfull");
+    // alert("Login Successfull");
   } catch (error) {
     dispatch({ type: LOGIN_FAILURE, payload: error });
-    alert("Login Failed");
+    // alert("Login Failed");
     console.log(error);
   }
 };

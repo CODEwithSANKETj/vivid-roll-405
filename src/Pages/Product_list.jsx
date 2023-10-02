@@ -1,21 +1,20 @@
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
+import { useToast } from "@chakra-ui/react";
 
-import React, { useEffect, useState } from 'react'
-import { styled } from 'styled-components'
-import { useToast } from '@chakra-ui/react';
-
-import dog_pic from '../Images/Dog.png'
-import bird_pic from '../Images/bird.png'
-import toys_pic from '../Images/toys.png'
-import cart_pic from '../Images/cart.png'
-import cat_pic from '../Images/cat.png'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../Redux/Prod_redux/actions'
-import store from '../Redux/store'
-import { Link, useSearchParams } from 'react-router-dom'
-import { Skeleton, Spinner } from '@chakra-ui/react'
+import dog_pic from "../Images/Dog.png";
+import bird_pic from "../Images/bird.png";
+import toys_pic from "../Images/toys.png";
+import cart_pic from "../Images/cart.png";
+import cat_pic from "../Images/cat.png";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../Redux/Prod_redux/actions";
+import { Link, useSearchParams } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
 function Product_list() {
   const toast = useToast();
+
 
     let [data,setdata] = useState([])
     let [refresh,setrefresh] = useState(true)
@@ -44,21 +43,24 @@ function Product_list() {
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
     };
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-    function addtocart(e,item){
-      e.preventDefault()
-      // Check if the product already exists in the cart
-      //console.log(cartData.cart,'data');
-    const productExists = cartData.cart.some((cartItem) => cartItem._id === item._id);
+  function addtocart(e, item) {
+    e.preventDefault();
+    // Check if the product already exists in the cart
+    //console.log(cartData.cart,'data');
+    const productExists = cartData.cart.some(
+      (cartItem) => cartItem._id === item._id
+    );
 
     if (productExists) {
       // Show a toast notification indicating that the product already exists
       toast({
-        title: 'Product already in cart',
-        description: 'This product is already in your cart.',
-        status: 'info', // You can choose the toast status
+        title: "Product already in cart",
+        description: "This product is already in your cart.",
+        status: "info", // You can choose the toast status
         duration: 3000, // Duration for the toast
         isClosable: true,
       });
@@ -66,35 +68,33 @@ function Product_list() {
       // If the product doesn't exist, add it to the cart
       dispatch(addToCart(item));
       toast({
-        title: 'Product added to cart', // Set the title to "Product added to cart"
-        status: 'success', // Use 'success' status for a green color
+        title: "Product added to cart", // Set the title to "Product added to cart"
+        status: "success", // Use 'success' status for a green color
         duration: 3000, // Duration for the toast
         isClosable: true,
       });
       // Optionally, you can show a success toast here if needed
     }
-    }
-    function filter(e){
-      e.preventDefault()
-      if(data.length>0){
-        const FilteredData = data.slice();
-        if(e.target.value!=='All'){
-          const final_data = FilteredData.filter((item)=>{
-            if(item.brand === e.target.value){
-              return true
-            }
-            return false
-          })
-          setdata(final_data)
-        }
-        else{
-          setrefresh(!refresh)
-        }
-        
-
+  }
+  function filter(e) {
+    e.preventDefault();
+    if (data.length > 0) {
+      const FilteredData = data.slice();
+      if (e.target.value !== "All") {
+        const final_data = FilteredData.filter((item) => {
+          if (item.brand === e.target.value) {
+            return true;
+          }
+          return false;
+        });
+        setdata(final_data);
+      } else {
+        setrefresh(!refresh);
       }
     }
+
   
+
   function sort(e) {
     e.preventDefault();
     if (data.length > 0) {
@@ -405,7 +405,7 @@ const Filter_Ribbon = styled.div`
 `;
 
 const Main_Div = styled.div`
-  background-color: white;
+  background-color: #f8e7e7;
 `;
 
 const Pagination = styled.div`
