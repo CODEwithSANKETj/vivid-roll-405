@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import { useToast } from '@chakra-ui/react';
@@ -43,10 +44,9 @@ function Product_list() {
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
     };
-   
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
+  const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+
     function addtocart(e,item){
       e.preventDefault()
       // Check if the product already exists in the cart
@@ -91,130 +91,148 @@ function Product_list() {
           setrefresh(!refresh)
         }
         
+
+      }
+    }
+  }
+  function sort(e) {
+    e.preventDefault();
+    if (data.length > 0) {
+      const sortedData = data.slice();
+      if (e.target.value == "Asc") {
+        sortedData.sort((a, b) => {
+          return a.price - b.price;
+        });
+      }
+      if (e.target.value == "Des") {
+        sortedData.sort((a, b) => {
+          return b.price - a.price;
+        });
       }
 
+      setdata(sortedData);
     }
-    function sort(e){
-      e.preventDefault()
-      if(data.length>0){
-        const sortedData = data.slice();
-        if(e.target.value=="Asc"){
-          sortedData.sort((a,b)=>{
-            return a.price - b.price
-          })
-        }
-        if(e.target.value=='Des'){
-          sortedData.sort((a,b)=>{
-            return b.price - a.price
-          })
-        }
-        setdata(sortedData)
-      }
+  }
+  useEffect(() => {
+    setisloading(true);
+    const queryParams = new URLSearchParams();
+    queryParams.append("page", currentPage);
+    queryParams.append("limit", 9);
+    const category = searchParams.get("category");
+    if (category) {
+      queryParams.append("category", category);
     }
-    useEffect(()=>{
-      setisloading(true)
-      const queryParams = new URLSearchParams();
-      queryParams.append('page', currentPage);
-      queryParams.append('limit', 9);
-      const category = searchParams.get('category');
-      if (category) {
-        queryParams.append('category', category);
-      }
-      const queryString = queryParams.toString();
-      //console.log(queryString);
-        axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/?${queryString}`)
-        .then((res)=>{
-          setisloading(false)
-          console.log(res.data.total)
-          setTotalItems(res.data.total)
-          setdata(res.data.data)
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
-    },[refresh,currentPage,searchParams])
+    const queryString = queryParams.toString();
+    console.log(queryString);
+    axios
+      .get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/?${queryString}`)
+      .then((res) => {
+        setisloading(false);
+        console.log(res.data.total);
+        setTotalItems(res.data.total);
+        setdata(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [refresh, currentPage, searchParams]);
+
   return (
     <Main_Div>
-        <Filter_div>
-            <Filter_option  onClick={handleAllClick}>
-            <Filter_icon src={bird_pic}/>
-                All Types
-            </Filter_option>
-            <Filter_option onClick={() => handleFilterClick('cat')}>
-                <Filter_icon src={cat_pic}/>
-                Cat Food
-            </Filter_option>
-            <Filter_option onClick={() => handleFilterClick('dog')} >
-              <Filter_icon src={dog_pic}  />
-                  Dog Food
-            </Filter_option>
-            
-            <Filter_option onClick={() => handleFilterClick('dog_toy')}>
-            <Filter_icon src={toys_pic}/>
-                Toys
-            </Filter_option>
-        </Filter_div>
-        <Product_div>
-            <Product_filter_div>
-            <FilterContainer>
-                <FilterSection>
-                    <FilterLabel>Filter by Price:</FilterLabel>
-                    <Select onChange={sort}>
-                    <option value="">Select</option>
-                    <option value="Asc">Asc</option>
-                    <option value="Des">Des</option>
-                    </Select>
-                </FilterSection>
+      {/* //Filter Ribbon Starts here */}
+      <Filter_Ribbon>
+        <Filter_option onClick={handleAllClick}>
+          <Filter_icon src={bird_pic} />
+          All Types
+        </Filter_option>
+        <Filter_option onClick={() => handleFilterClick("cat")}>
+          <Filter_icon src={cat_pic} />
+          Cat Food
+        </Filter_option>
+        <Filter_option onClick={() => handleFilterClick("dog")}>
+          <Filter_icon src={dog_pic} />
+          Dog Food
+        </Filter_option>
 
-                <FilterSection>
-                    <FilterLabel>Filter by Brand:</FilterLabel>
-                    <Select onChange={filter}>
-                    <option value="All">All</option>
-                    <option value="PAWSINDIA">PAWSINDIA</option>
-                    <option value="WHISKAS">WHISKAS</option>
-                    <option value="ROYAL CANIN">ROYAL CANIN</option>
-                    <option value="Wiskers">Wiskers</option>
-                    <option value="VET LIFE">VET LIFE</option>
+        <Filter_option onClick={() => handleFilterClick("dog_toy")}>
+          <Filter_icon src={toys_pic} />
+          Toys
+        </Filter_option>
+      </Filter_Ribbon>
+      {/* Filter Ribbon Ends Here */}
 
-                    </Select>
-                </FilterSection>
-                </FilterContainer>
-          </Product_filter_div>
-    <Product_list_view_div>
-    {isloading ? <Spinner
-  thickness='4px'
-  speed='0.65s'
-  emptyColor='gray.200'
-  color='blue.500'
-  size='xl'
-/>  :data.length>0 && data.map((data,index)=>{
-        return <Link key={index} to={`/product_details/${data._id}`} >
-          <Product_item_div >
-        <Product_img src={data.image}/>
-        
-        <Product_detail>
-            <Brand>
-            <p>{data.brand}</p>
-            </Brand>
-            <Title>{data.title}</Title>
-          <ProductPriceContainer>
-            <Price>₹ {data.price}</Price>
-            <CartIconContainer onClick={(e)=>addtocart(e,data)}>
-                <CartIcon src={cart_pic} alt="Cart Icon" />
-            </CartIconContainer>
-          </ProductPriceContainer>
-          </Product_detail>
-      </Product_item_div>
-        </Link>
-    }) }
-    {}
-       
-            
-    </Product_list_view_div>
+      {/* Products div starts here */}
+      <Product_div>
+        {/* ---------------------Filter Section Insite Products Div */}
+        <Product_filter_div>
+          <FilterSection>
+            <FilterLabel>Filter by Price:</FilterLabel>
+            <Select onChange={sort}>
+              <option value="">Select</option>
+              <option value="Asc">Asc</option>
+              <option value="Des">Des</option>
+            </Select>
+          </FilterSection>
+          <FilterSection>
+            <FilterLabel>Filter by Brand:</FilterLabel>
+            <Select onChange={filter}>
+              <option value="All">All</option>
+              <option value="PAWSINDIA">PAWSINDIA</option>
+              <option value="WHISKAS">WHISKAS</option>
+              <option value="ROYAL CANIN">ROYAL CANIN</option>
+              <option value="Wiskers">Wiskers</option>
+              <option value="VET LIFE">VET LIFE</option>
+            </Select>
+          </FilterSection>
+        </Product_filter_div>
+        {/* --------------------------Filter Section Ends */}
 
-        </Product_div>
+        <Product_list_view_div>
+          {isloading ? (
+            <Spinner
+              width="200px"
+              height="200px"
+              thickness="50px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="pink.500"
+              size="xl"
+            />
+          ) : (
+            data.length > 0 &&
+            data.map((data, index) => {
+              return (
+                <Link
+                  key={index}
+                  to={`/product_details/${data._id}`}
+                  className="mainItemWrapper"
+                >
+                  <Product_item_div>
+                    <Product_img src={data.image} />
+                    <Product_detail>
+                      <Brand>
+                        <p>{data.brand}</p>
+                      </Brand>
+                      <Title>{data.title}</Title>
+                      <ProductPriceContainer>
+                        <Price>₹ {data.price}</Price>
+                        <CartIconContainer onClick={(e) => addtocart(e, data)}>
+                          <CartIcon src={cart_pic} alt="Cart Icon" />
+                        </CartIconContainer>
+                      </ProductPriceContainer>
+                    </Product_detail>
+                  </Product_item_div>
+                </Link>
+              );
+            })
+          )}
+          {}
+        </Product_list_view_div>
+      </Product_div>
 
-        <Pagination>
+      {/* Products div end here */}
+
+      <Pagination>
         <PaginationButton
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
@@ -222,7 +240,7 @@ function Product_list() {
           Previous
         </PaginationButton>
         <PaginationInfo>
-          Page {currentPage} of {Math.ceil(totalItems/ itemsPerPage)}
+          Page {currentPage} of {Math.ceil(totalItems / itemsPerPage)}
         </PaginationInfo>
         <PaginationButton
           onClick={() => handlePageChange(currentPage + 1)}
@@ -232,40 +250,35 @@ function Product_list() {
         </PaginationButton>
       </Pagination>
     </Main_Div>
-  )
+  );
 }
 
-export default Product_list
+export default Product_list;
 const Title = styled.div`
- max-width: 200px; /* Adjust the value as needed */
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 20px;
+`;
 
-/* Add ellipsis (...) for text overflow */
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-margin-bottom: 20px;
-`
-
-const Brand =styled.div`
-justify-content: center;
-margin-left: 50px;
-
-`
+const Brand = styled.div`
+  justify-content: center;
+  margin-left: 50px;
+`;
 const ProductPriceContainer = styled.div`
   display: flex;
   margin-top: 10px;
   margin-top: -20px;
-  //border: 1px solid red;
   justify-content: space-between;
   align-items: center;
   width: 200px;
   gap: 5px;
   margin-bottom: 4px;
-  /* Other styles for the container */
 `;
 
 const Price = styled.p`
-  margin: 0; /* Remove default margin */
+  margin: 0;
   margin-left: 10px;
   color: orange;
   border: 1px solid orange;
@@ -273,107 +286,90 @@ const Price = styled.p`
   padding-right: 5px;
   padding-left: 5px;
   border-radius: 8px;
-  /* Other styles for the price text */
 `;
 
 const CartIconContainer = styled.div`
-  cursor: pointer; /* Change cursor to pointer on hover */
-  /* Other styles for the cart icon container */
+  cursor: pointer;
   margin-right: 10px;
   &:hover {
-    /* Add hover styles for the cart icon container here */
-    background-color: lightgray; /* Example background color change on hover */
+    background-color: #da7b7b;
   }
 `;
 
 const CartIcon = styled.img`
-  width: 20px; /* Adjust the icon size as needed */
+  width: 20px;
   height: 20px;
-  /* Other styles for the icon */
 `;
 const Product_detail = styled.div`
-justify-content: center;
-align-items: center;
-//border: 1px solid red;
-border-bottom-left-radius: 10px;
-border-bottom-right-radius: 10px;
-background-color: #fddab8;
-`
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #d4a8a2;
+`;
 
 const Product_img = styled.img`
-    width: 200px;
-    height: 200px;
-    border-radius: 8px;
-    
-    
-`
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+`;
 const Product_item_div = styled.div`
-    background-color: #ffffff;
-    border-radius: 8px;
-    //padding-bottom: 10px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    display: flex;
-    width: 200px;
-    height: 275px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-
-`
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  width: 200px;
+  height: 275px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  box-shadow: 1px 1px 5px grey;
+`;
 const Filter_icon = styled.img`
-  width: 20px; /* Adjust the icon size as needed */
+  width: 20px;
   height: 20px;
-  
-  /* Other styles for the icon */
 `;
 
 const Filter_option = styled.div`
-    display: flex;
+  display: flex;
   align-items: center;
   gap: 5px;
   height: 30px;
   width: 100px;
   justify-content: center;
-
   border-radius: 10px;
-  background-color: white;
+  background-color: #e7cae1;
   transition: background-color 0.3s ease;
+  cursor: pointer;
   &:hover {
-    background-color: lightgray; /* Change the background color on hover */
-    /* Add other hover effects if needed */
-  } 
-`
+    background-color: lightgray;
+  }
+`;
 const Product_list_view_div = styled.div`
-background-color: #fafafa;
+  max-width: 1100px;
+  margin: auto;
+  border-radius: 30px;
+  padding: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 4 columns */
-  gap: 70px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-`
-const FilterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
- gap: 50px;
-  align-items: center;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  height: auto;
-    
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
 
+  .mainItemWrapper {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const FilterSection = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   align-items: center;
 `;
 
 const FilterLabel = styled.label`
-  margin-right: 10px;
   font-weight: bold;
 `;
 
@@ -383,41 +379,34 @@ const Select = styled.select`
   border-radius: 5px;
 `;
 const Product_filter_div = styled.div`
-border: 1px solid red;
-display: flex;
-flex-direction: row;
-margin-top: 50px;
-height: 300px;
-margin-right: 100px;
-position: sticky; /* Make the filter container sticky */
-  top: 0; /* Position it at the top of its containing element */
-  align-self: flex-start;
-//position: absolute;
-top: 0;
-
-`
-const Product_div = styled.div`
-  background-color: #ffffff;
+  text-align: center;
+  background-color: #ebafb9;
+  padding: 100px 20px;
+  width: 15%;
   display: flex;
-
-  /* Additional styles for grid items if needed */
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  left: 0;
+  top: 10%;
+  height: 100vh;
+`;
+const Product_div = styled.div`
+  margin-left: 16%;
+  padding: 30px 50px;
 `;
 
-const Filter_div = styled.div`
-display: flex;
-justify-content: space-around;
-background-color: #ffffff;
-width: 80%;
-`
+const Filter_Ribbon = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 5px 20%;
+  background-color: #ebafb9;
+`;
 
 const Main_Div = styled.div`
-border: 1px solid black;
-background-color: #ffffff;
-display: flex;
-align-items: center;
-flex-direction: column;
-
-`
+  background-color: white;
+`;
 
 const Pagination = styled.div`
   display: flex;
