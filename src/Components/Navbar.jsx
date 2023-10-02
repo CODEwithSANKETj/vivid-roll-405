@@ -8,16 +8,23 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import "./Navbar.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../Redux/store";
+import { LOGOUT } from "../Redux/action_types";
 
 function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-const cartData = useSelector((store)=>store.cart);
-const isAuthenticated = useSelector((store) => store.auth.isAuth);
-console.log(isAuthenticated,'navbar');
-//console.log(cartData.cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const cartData = useSelector((store) => store.cart);
+  const isAuthenticated = useSelector((store) => store.auth.isAuth);
+  console.log(isAuthenticated, "navbar");
+  //console.log(cartData.cart);
+
+  const auth = useSelector((store) => store.auth.isAuth);
+
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+  };
+
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
@@ -73,7 +80,11 @@ console.log(isAuthenticated,'navbar');
             Contact
           </Link>
           <NavLink to={"/allproducts"}>Products</NavLink>
-          <Button colorScheme="orange" className="loginBtns">
+          <Button
+            onClick={() => navigate("/login")}
+            colorScheme="orange"
+            className="loginBtns"
+          >
             Login
           </Button>
           {false && (
@@ -125,14 +136,15 @@ console.log(isAuthenticated,'navbar');
             Contact
           </Link>
           <NavLink to="/allproducts">Products</NavLink>
-          {<Button colorScheme="orange" className="loginBtns">
-            {isAuthenticated?'Logout':'Login'}
-          </Button>}
-          
+          {
+            <Button colorScheme="orange" className="loginBtns">
+              {isAuthenticated ? "Logout" : "Login"}
+            </Button>
+          }
         </div>
 
         <div className="cartContainer">
-          <div onClick={()=>navigate('/cart')} className="shoppingcarticon">
+          <div onClick={() => navigate("/cart")} className="shoppingcarticon">
             <div className="count">{cartData.cart.length}</div>
             <img src={shoppingcart} alt="shoppingcarticon" />
           </div>
@@ -144,8 +156,15 @@ console.log(isAuthenticated,'navbar');
         </div>
 
         <div className="nav-buttons">
-          <Button colorScheme="orange">Login</Button>
-          {false && <Button colorScheme="red">Logout</Button>}
+          {!auth ? (
+            <Button onClick={() => navigate("/login")} colorScheme="orange">
+              Login
+            </Button>
+          ) : (
+            <Button onClick={logout} colorScheme="red">
+              Logout
+            </Button>
+          )}
         </div>
       </div>
     </>
