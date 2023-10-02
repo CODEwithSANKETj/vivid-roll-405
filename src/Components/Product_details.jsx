@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Spinner } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../Redux/store';
-import { addToCart } from '../Redux/Prod_redux/actions';
+import { addToCart, calculate, changequantity } from '../Redux/Prod_redux/actions';
 function ProductDetails() {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const {id} = useParams();
@@ -20,6 +20,7 @@ function ProductDetails() {
     //console.log('Product added',item);
   }
   useEffect(()=>{
+    //dispatch(calculate())
     axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/`)
     .then((res)=>{
       let data = res.data.data
@@ -29,7 +30,7 @@ function ProductDetails() {
     .catch((err)=>{
       console.log(err);
     })
-},[])
+},[quantity])
   const handleMouseMove = (e) => {
     // Calculate the position of the cursor relative to the MainImageContainer
     const boundingBox = e.currentTarget.getBoundingClientRect();
@@ -41,7 +42,13 @@ function ProductDetails() {
   };
   function set(value){
     //console.log('clicked');
-    setquantiy(quantity+value)
+    setquantiy((prevQuantity) => {
+      const newQuantity = prevQuantity + value;
+      dispatch(changequantity(newQuantity, data));
+      return newQuantity; // Return the new quantity for the component's local state
+    });
+    
+    
   }
   //console.log(quantity);
   return (

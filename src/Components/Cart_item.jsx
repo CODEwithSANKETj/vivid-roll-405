@@ -1,12 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../Redux/store';
-import { deleteFromCart } from '../Redux/Prod_redux/actions';
+import { calculate, changequantity, deleteCart } from '../Redux/Prod_redux/actions';
 function Cart_item({item}) {
-    const [quantity , setquantity] = useState(1)
+    const [quantity , setquantity] = useState(item.quantity)
+  //  const [deletetriggered,setdelete] = useState(true)
+    const [deletetriggered, setdelete] = useState(false);
+
     const dispatch = useDispatch()
   const cartData = useSelector((store)=>store.cart);
-  console.log(cartData);
+
+  useEffect(() => {
+    // Dispatch the calculate action
+    //dispatch(calculate());
+
+  }, [quantity,deletetriggered]); // Include quantity as a dependency
+
+  function Changequantity(e){
+    e.preventDefault()
+    const newQuantity = Number(e.target.value);
+    setquantity(newQuantity);
+
+  // Dispatch the action with the updated quantity
+  dispatch(changequantity(newQuantity, item));
+    //dispatch(calculate())
+  }
+  function deletefromcart(e,item){
+    e.preventDefault()
+    //console.log(item._id);
+    dispatch(deleteCart(item._id))
+    setdelete(!deletetriggered); 
+
+  }
+
+  //console.log(cartData);
   return (
     <div class="row gy-3">
                     <div class="col-lg-5">
@@ -21,7 +48,8 @@ function Cart_item({item}) {
                     </div>
                     <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
                       <div class="">
-                        <select style={{width: "100px"}} value={quantity} onChange={(e)=>setquantity(e.target.value)}  class="form-select me-4">
+                        <select style={{width: "100px"}} value={quantity} onChange={Changequantity} 
+                          class="form-select me-4">
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
@@ -34,7 +62,7 @@ function Cart_item({item}) {
                       </div>
                     </div>
                     <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
-                      <div onClick={()=>dispatch(deleteFromCart(item))} class="float-md-end">
+                      <div onClick={(e)=>deletefromcart(e,item)} class="float-md-end">
                         <a  href="#" class="btn btn-light border text-danger icon-hover-danger"> Remove</a>
                       </div>
                     </div>
