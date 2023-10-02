@@ -1,0 +1,42 @@
+#service_card{
+   /* border: 1px solid red; */
+   background-color:  rgb(254, 236, 212);
+   margin: 50px;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.service_body{
+    /* border:  1px solid black; */
+}
+
+.heading{
+    align-items: center;
+    margin: 30px 0px 30px 0px;
+    display: flex;
+    justify-content: center;
+    color: rgb(105, 105, 169);
+}
+
+#main_text{
+   margin-left: 50px;
+   margin-right: 50px;
+   /* border: 1px solid red; */
+}
+
+.text{
+    /* border: 1px solid red; */
+    margin: 15px;
+}
+
+.card_footer{
+    /* border: 1px solid red; */
+    margin: 0px 50px 100px 50px;
+}
+
+.button{
+    margin: auto;   
+}
+
+.mainPage{
+    background-color: rgb(248, 227, 230);
+}
