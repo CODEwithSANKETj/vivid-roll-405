@@ -4,7 +4,7 @@ export const addToCart = (item) => ({
     payload: item, // You can pass the item you want to add to the cart as payload
   });
   export const deleteCart = (itemId) => {
-    console.log(itemId ,'in action');
+    //console.log(itemId ,'in action');
     return {
       type: DELETE_FROM_CART,
     payload: { id: itemId }, 
