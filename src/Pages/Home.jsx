@@ -18,11 +18,12 @@ import { PhoneIcon, EmailIcon, LinkIcon } from "@chakra-ui/icons";
 import { Button, Heading } from "@chakra-ui/react";
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 function Home() {
   const navigate = useNavigate()
   return (
 
-    <>
+    <><Navbar/>
       <HOME className="homePage">
         {/*  --------Hero Section Start-------- */}
         <div className="heroSection">

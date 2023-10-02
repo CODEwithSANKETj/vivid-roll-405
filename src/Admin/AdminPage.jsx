@@ -1,49 +1,84 @@
 import { Box, Button, Center, Heading } from "@chakra-ui/react";
 import AdminNavbar from "./AdminNavbar";
 import styled from "styled-components";
+import AdminMainNavbar from "./AdminMainNavbar";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AdminPage = () => {
+
+  const [allorders,setAllorders] = useState([]);
+const getAllOrders = async () => {
+  try {
+    let res = await axios.get("https://dark-pink-rabbit-wear.cyclic.cloud/product/getorder");
+    console.log(res.data);
+    setAllorders(res.data);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+  useEffect(() => {
+    getAllOrders();
+  },[])
+
   return (
     <>
       <Box>
+        <AdminMainNavbar/>
         <AdminNavbar />
         <CONTENT>
-          <Center>
-            <Button
-              backgroundColor="#c75454"
-              colorScheme="orange"
-              color="white"
-              fontWeight="thin"
-            >
-              Get Latest Sales Data
-            </Button>
-          </Center>
           <div className="mainContaineR">
             <Box backgroundColor="#f1b9b9" borderRadius={10} p={10}>
               <Heading as="h4" size="lg">
-                Todays Sales
+                Total Revenue
               </Heading>
               <Heading as="h4" size="lg">
-                $ 0.00
+                Rs. {allorders.reduce((acc, curr) => {
+                  return acc+curr.price
+                 }, 0)}
               </Heading>
             </Box>
             <Box backgroundColor="#f1b9b9" borderRadius={10} p={10}>
               <Heading as="h4" size="lg">
-                Week Sales
+                Total Number of Orders
               </Heading>
               <Heading as="h4" size="lg">
-                $ 0.00
+                {allorders.length }
               </Heading>
             </Box>
-            <Box backgroundColor="#f1b9b9" borderRadius={10} p={10}>
-              <Heading as="h4" size="lg">
-                Month Sales
-              </Heading>
-              <Heading as="h4" size="lg">
-                $ 0.00
-              </Heading>
-            </Box>
+
           </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Product Id</th>
+                <th>Product Title</th>
+                <th>Price</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>User ID</th>
+              </tr>
+            </thead>
+            <tbody id="package_tbody">
+              {
+                allorders.map((order, index) => {
+                  return (
+                    <tr key={order._id}>
+                      <td>{order._id}</td>
+                      <td>{order.title}</td>
+                      <td>{order.price}</td>
+                      <td>{order.brand}</td>
+                      <td>{order.category}</td>
+                      <td>{order.userID}</td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+          </table>
         </CONTENT>
       </Box>
     </>

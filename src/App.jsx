@@ -9,8 +9,6 @@ import MainRoutes from "./Pages/MainRoutes";
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      {/* <AdminMainNavbar />  we have to conditionally render it if user is Admin */}
       <MainRoutes />
     </div>
   );

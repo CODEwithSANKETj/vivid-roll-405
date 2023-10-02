@@ -3,6 +3,8 @@ import AdminNavbar from "./AdminNavbar";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import AdminMainNavbar from "./AdminMainNavbar";
+import { Button } from "@chakra-ui/react";
 
 function AdminUsers() {
   // const { productsData, loading, error } = state;
@@ -14,9 +16,10 @@ function AdminUsers() {
   const getAllUsers = async () => {
     try {
       let res = await axios.get(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/users"
+        "https://dark-pink-rabbit-wear.cyclic.cloud/users/getusers"
       );
-      setAllUsers(res.data.data);
+      console.log(res.data)
+      setAllUsers(res.data.allusers);
     } catch (error) {
       console.log(error);
     }
@@ -28,15 +31,16 @@ function AdminUsers() {
 
   return (
     <Box pb={"50px"}>
+      <AdminMainNavbar/>
       <AdminNavbar />
       <CONTENT>
         <div className="mainContainer">
           <div className="adminOptions">
             <div className="searchbarSection">
-              <input placeholder="Search..." value={searching} />
+              <input placeholder="Search..." />
             </div>
             <div className="sortingSection">
-              <select name="sorting" value={sorting} id="sorting">
+              <select name="sorting" id="sorting">
                 <option value="">Sort By Name</option>
                 <option value="asc">A to Z</option>
                 <option value="desc">Z to A</option>
@@ -50,21 +54,20 @@ function AdminUsers() {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Edit</th>
-                <th>Delete</th>
               </tr>
             </thead>
             <tbody id="package_tbody">
-              {allUsers.map((user, index) => {
-                return (
-                  <tr key={user.id}>
-                    <td>{index + 1}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
-                  </tr>
-                );
-              })}
+              {
+                allUsers.map((user, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{user._id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td><Button colorScheme="red">Block</Button></td>
+                    </tr>
+                  )
+                })}
             </tbody>
           </table>
         </div>
