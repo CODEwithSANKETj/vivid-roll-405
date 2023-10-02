@@ -6,7 +6,7 @@ import { Card, CardHeader, CardBody,Image,Stack,Heading,Text,Button, CardFooter,
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,useDisclosure,Input,FormControl,FormLabel } from '@chakra-ui/react'
+  ModalCloseButton,useDisclosure,Input,FormControl,FormLabel,useToast  } from '@chakra-ui/react'
 import "../CSS/service.css";
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -15,11 +15,11 @@ import { useSelector } from 'react-redux';
 const Service_cart = ({title,id,image,details,price}) => {
   
 
-  const token=useSelector((state)=>state.auth);
+  const token=useSelector((state)=>state.auth.token);
   // const cartData = useSelector((store)=>store.cart);
-  console.log(token)
+  // console.log(token)
   
-
+  const toast= useToast();
   const { isOpen, onOpen, onClose,  } = useDisclosure()
 
   const initialRef = React.useRef(null)
@@ -31,26 +31,40 @@ const Service_cart = ({title,id,image,details,price}) => {
    const [type,setType]=useState("");
 
      const handleBooking=async()=>{
-       const service={Name:name,Price:price,address:location,date:date,animalType:type};
+       const service={
+        ServiceType:title,Name:name,Price:price,address:location,date:date,animalType:type};
        console.log(service)
        
        try {
-        await  axios.post("https://dark-pink-rabbit-wear.cyclic.cloud/service/register",service)
-                .then((res)=>{
-                  console.log(res)
-                })
-                .catch((err)=>console.log(err))
+          const add=     await axios.post('https://dark-pink-rabbit-wear.cyclic.cloud/service/register',service, {
+              headers: {
+                authorization:`baerer ${token}`
+              }
+          }) 
+          console.log(add)
+          onClose() 
+          toast({
+            title: 'service booked.',
+            description: "service sechdule successful.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })
       } catch (error) {
             console.log(error)
+            toast({
+              title: 'Wrong Crendentials.',
+              description: "some think going wrong.",
+              status: 'error',
+              duration: 2000,
+              isClosable: true,
+              position:'top'
+            })
       }
 
-           
-       
-          
      }
  
   
-
 
 
   return (
