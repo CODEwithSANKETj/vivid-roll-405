@@ -28,7 +28,6 @@ const Service_cart = ({title,id,image,details,price}) => {
         >
           <Image
             objectFit='cover'
-            // maxW={{ base: '50%', sm: '500px' }}
             width={500}
             src={image}
             alt='Caffe Latte'
