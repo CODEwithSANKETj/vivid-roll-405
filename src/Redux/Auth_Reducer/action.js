@@ -1,7 +1,8 @@
 import axios from "axios";
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "../action_types";
 
 export const login = (details) => async (dispatch) => {
-  dispatch({ type: "LOGIN_REQUEST" });
+  dispatch({ type: LOGIN_REQUEST });
   try {
     const res = await axios.post(
       "https://dark-pink-rabbit-wear.cyclic.cloud/users/login",
@@ -10,10 +11,11 @@ export const login = (details) => async (dispatch) => {
     if (res.error) {
       throw new Error(res.error);
     }
-    dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    console.log(res)
+    dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
     alert("Login Successfull");
   } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error });
+    dispatch({ type: LOGIN_FAILURE, payload: error });
     alert("Login Failed");
     console.log(error);
   }

@@ -1,3 +1,5 @@
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "../action_types";
+
 const initilstate = {
   name: "",
   isAuth: false,
@@ -7,17 +9,19 @@ const initilstate = {
 };
 
 export const Reducer = (state = initilstate, action) => {
-  switch (action.types) {
-    case "LOGIN_REQUEST":
+  // console.log(action,"in reducer");
+  
+  switch (action.type) {
+    case LOGIN_REQUEST:
       return { ...state, isLoading: true };
-    case "LOGIN_SUCCESS":
+    case LOGIN_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isAuth: true,
         token: action.payload,
       };
-    case "LOGIN_FAILURE":
+    case LOGIN_FAILURE:
       return { ...state, isLoading: false, error: action.payload };
     default:
       return state;
