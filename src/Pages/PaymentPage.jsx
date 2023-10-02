@@ -17,7 +17,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { empty } from "../Redux/Prod_redux/actions";
 export const Paymentpage = () => {
@@ -71,7 +71,7 @@ export const Paymentpage = () => {
           isClosable: true,
         });
         
-        //navigate('/')
+        navigate('/')
         
       }
     } catch (error) {
