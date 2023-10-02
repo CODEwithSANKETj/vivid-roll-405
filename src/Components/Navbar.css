@@ -1,0 +1,266 @@
+.Navbar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5% 0px 5%;
+  max-height: 200px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  font-family: "Signika", sans-serif;
+  font-weight: bold;
+  background-color: #f8e7e7;
+}
+
+.logoSection {
+  width: 15%;
+  cursor: pointer;
+}
+
+.logoSection img {
+  width: 100%;
+}
+
+.linksSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 40%;
+  padding: 0 5%;
+  font-size: 1.2rem;
+}
+
+.linksSection a {
+  text-decoration: none;
+  color: #5e1b1b;
+  cursor: pointer;
+}
+
+.linksSection button {
+  display: none;
+}
+
+.cartContainer {
+  display: flex;
+  align-items: center;
+  width: 10%;
+  gap: 0.5rem;
+}
+
+.cartContainer img {
+  width: 40px;
+}
+
+.wishlisticon,
+.shoppingcarticon {
+  width: 40%;
+  padding: 15px;
+}
+
+.shoppingcarticon img {
+  width: 100%;
+}
+
+.wishlisticon img {
+  width: 100%;
+  mix-blend-mode: color-burn;
+}
+
+.count {
+  position: relative;
+  top: 0.2rem;
+  left: 2rem;
+  background-color: #ec2cd2;
+  width: 1.3rem;
+  height: 1.3rem;
+  text-align: center;
+  border-radius: 50%;
+  color: white;
+}
+
+.MobileNavbar {
+  display: none;
+}
+
+/* ----------------------Responsiveness---------------------- */
+
+/* ------------------------For Tablet------------------------ */
+
+@media (max-width: 850px) {
+  .Navbar {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .logoSection {
+    width: 20%;
+    cursor: pointer;
+  }
+
+  .logoSection img {
+    width: 100%;
+  }
+
+  .linksSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
+    padding: 0 5%;
+    font-size: 1rem;
+  }
+
+  .cartContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    gap: 0.5rem;
+  }
+
+  .cartContainer img {
+    width: 35px;
+  }
+
+  .nav-buttons {
+    display: none;
+  }
+
+  .linksSection button {
+    display: block;
+  }
+
+  .wishlisticon,
+  .shoppingcarticon {
+    width: 30%;
+    padding: 5px;
+  }
+
+  .shoppingcarticon img {
+    width: 50%;
+  }
+
+  .wishlisticon img {
+    width: 60%;
+    mix-blend-mode: color-burn;
+  }
+
+  .count {
+    position: relative;
+    top: 0.2rem;
+    left: 2rem;
+    background-color: #ec2cd2;
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+  }
+}
+
+/* ------------------------For Phone------------------------ */
+
+@media (max-width: 450px) {
+  .Navbar {
+    display: none;
+  }
+
+  .MobileNavbar {
+    display: flex;
+    padding: 0px 10px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8e7e7;
+    width: 100%;
+  }
+
+  .logoSection img {
+    transform: scale(1.3);
+  }
+
+  .hamburger {
+    display: flex;
+    place-items: center;
+    place-content: center;
+    border-radius: 5px;
+    background-color: rgba(201, 167, 167, 0.438);
+    width: 30px;
+    height: 30px;
+    color: rgb(110, 42, 42);
+  }
+
+  .hamburger:active {
+    background-color: rgb(177, 106, 106);
+  }
+
+  .cartContainerMobile {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+  }
+
+  .cartContainerMobile img {
+    width: 40px;
+  }
+  .count {
+    left: 1rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    font-size: 0.5rem;
+  }
+
+  .hamburgerMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    transform: translate(-50%, -50%);
+    color: white;
+    padding-top: 20%;
+    font-size: 3rem;
+    top: 50%;
+    left: 50%;
+  }
+
+  .hamburgerMenu a {
+    width: 50%;
+    text-align: center;
+    animation: fadeInFromLeft 1s;
+  }
+
+  .hamburgerMenu a:hover {
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    background-color: white;
+    color: #fd00db;
+    width: 80%;
+    transition: all 1s;
+  }
+
+  .hiddenHamburgerMenu {
+    display: none;
+  }
+}
+
+@keyframes fadeInFromLeft {
+  0% {
+    transform: scale(0);
+    transform-origin: 50% 0%;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: 50% 0%;
+  }
+}

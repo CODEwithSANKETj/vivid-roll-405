@@ -1,80 +1,124 @@
 import styled from "styled-components";
-
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login, signup } from "../Redux/Auth_Reducer/action";
+import { useNavigate } from "react-router-dom";
 const LoginSignup = () => {
-  const signUpButton = document.getElementById("signUp");
-  const signInButton = document.getElementById("signIn");
-  const container = document.getElementById("container");
+  const [isSignUpActive, setIsSignUpActive] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [signupdata, setsignupData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [logindata, setlogindata] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handelsignup = (e) => {
+    e.preventDefault();
+    console.log(signupdata);
+    dispatch(signup(signupdata));
+    navigate("/");
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(logindata);
+    dispatch(login(logindata));
+    navigate("/");
+  };
 
   const handleSignUpClick = () => {
-    container.classList.add("right-panel-active");
+    setIsSignUpActive(true);
   };
 
   const handleSignInClick = () => {
-    container.classList.remove("right-panel-active");
+    setIsSignUpActive(false);
   };
 
-  signUpButton.addEventListener("click", handleSignUpClick);
-  signInButton.addEventListener("click", handleSignInClick);
   return (
     <DIV>
-      <div className="container" id="container">
+      <div
+        className={`container ${isSignUpActive ? "right-panel-active" : ""}`}
+      >
         <div className="form-container sign-up-container">
-          <form action="#">
+          <form action="#" onSubmit={handelsignup}>
             <h1>Create Account</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in" />
-              </a>
-            </div> */}
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(e) =>
+                setsignupData({ ...signupdata, name: e.target.value })
+              }
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) =>
+                setsignupData({ ...signupdata, email: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) =>
+                setsignupData({ ...signupdata, password: e.target.value })
+              }
+            />
             <button>Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
-          <form action="#">
+          <form action="#" onSubmit={handleLogin}>
             <h1>Sign in</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g" />
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in" />
-              </a>
-            </div> */}
             <span>or use your account</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={(e) =>
+                setlogindata({ ...logindata, email: e.target.value })
+              }
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) =>
+                setlogindata({ ...logindata, password: e.target.value })
+              }
+            />
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
           </form>
         </div>
         <div className="overlay-container">
           <div className="overlay">
-            <div className="overlay-panel overlay-left">
+            <div
+              className={`overlay-panel overlay-left ${
+                isSignUpActive ? "overlay-left-active" : ""
+              }`}
+            >
               <h1>Welcome Back!</h1>
               <p>
-                To keep connected with us please login with your personal info
+                To keep connected with us, please login with your personal info
               </p>
-              <button className="ghost" id="signIn">
+              <button className="ghost" onClick={handleSignInClick}>
                 Sign In
               </button>
             </div>
-            <div className="overlay-panel overlay-right">
+            <div
+              className={`overlay-panel overlay-right ${
+                isSignUpActive ? "overlay-right-active" : ""
+              }`}
+            >
               <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button className="ghost" id="signUp">
+              <p>Enter your personal details and start your journey with us</p>
+              <button className="ghost" onClick={handleSignUpClick}>
                 Sign Up
               </button>
             </div>

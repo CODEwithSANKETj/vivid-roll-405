@@ -1,0 +1,702 @@
+/*  --------------------------------------------------------> CSS for Homepage Start*/
+
+
+.heroSection {
+    display: flex;
+    place-items: center;
+    justify-content: space-around;
+    font-family: "Signika", sans-serif;
+    height: 80vh;
+}
+
+.heroLeft {
+    text-align: center;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.hero-buttons button{
+    color:white;
+    font-size: 1.5rem;
+    font-family: monospace;
+    box-shadow: 3px 3px 6px black;
+
+}
+
+.hero-buttons button:first-child{
+    background-color: rgb(250, 122, 3);
+    border: 3px solid rgb(250, 122, 3);
+    -webkit-text-stroke: rgb(250, 122, 3) 0.5px;
+}
+
+.hero-buttons button:nth-child(2){
+    background-color: rgb(38, 168, 38);
+        border: 3px solid rgb(38, 168, 38);
+        -webkit-text-stroke: rgb(38, 168, 38) 0.5px;
+}
+
+.heroLeft h1 {
+    font-family: "Signika", sans-serif;
+    font-size: 5rem;
+    /* color: transparent;
+    -webkit-text-stroke: #923418 1px; */
+}
+
+.heroRight img {
+    width: 90%;
+    margin: auto;
+    filter: drop-shadow(5px 3px 100px #a0850d);
+    border-radius: 40%;
+    transition: all ease-in 0.3s;
+    animation: myAnim 2s ease 0s 1 normal forwards;
+}
+
+.heroRight img:hover {
+    filter: drop-shadow(0.5px 0.3px 50px rgb(159, 116, 199));
+}
+
+.servicesSectionContainer{
+    display: flex;
+    place-items: center;
+    height: 100vh;
+}
+
+.servicesSection {
+    padding: 2rem 4rem;
+    border-radius: 30px;
+    background-color: #f1dce0;
+    text-align: center;
+}
+
+
+
+.servicesSection h1 {
+    font-family: "Signika", sans-serif;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 10px 50px;
+}
+
+.service {
+    padding: 20px;
+    background-color: #f7e7e7;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+    transition: all ease-in 0.3s;
+}
+
+.service img {
+    width: 90%;
+    background: linear-gradient(rgba(27, 91, 163, 0.5), rgba(2, 0, 0, 0.5));
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.service h3 {
+    font-family: "Signika", sans-serif;
+    font-size: 25px;
+}
+
+.service:hover {
+    background-color: rgba(153, 58, 137, 0.9);
+    transform: scale(1.05);
+    color: white;
+}
+
+.aboutSectionContainer {
+    display: flex;
+    place-items: center;
+    height: 100vh;
+}
+
+.aboutSection {
+    display: flex;
+    font-family: "Signika", sans-serif;
+    gap: 5rem;
+}
+
+.aboutLeft {
+    width: 30%;
+    padding: 10px;
+}
+
+.aboutLeft img {
+    width: 100%;
+    filter: drop-shadow(1px 1px 20px #e2b3dc);
+    border-radius: 30%;
+    transition: all 0.5s;
+}
+
+.aboutLeft img:hover {
+    filter: drop-shadow(1px 1px 100px rgb(212, 140, 152));
+    animation: ShakeTop 2s ease 0s 1 normal forwards;
+}
+
+.aboutRight {
+    width: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.aboutRight h1 {
+    font-family: "Signika", sans-serif;
+    margin-bottom: 3rem;
+}
+
+.aboutRight p {
+    margin-bottom: 3rem;
+    font-size: 1.3rem;
+}
+
+.aboutRight ul {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.aboutRight li {
+    list-style: none;
+    display: flex;
+    padding: 3px;
+    font-size: 1.2rem;
+}
+
+.aboutRight li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.groomersSection {
+    text-align: center;
+    background-color: #f1dce0;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+.groomers {
+    margin-top: 30px;
+    padding: 0 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3%;
+}
+
+.groomer {
+    padding: 10%;
+    background-color: #ffefef;
+    border-radius: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.groomer img {
+    border-radius: 100px;
+}
+
+.groomer h1 {
+    font-size: 20px;
+    color: black;
+}
+
+.groomer h3 {
+    font-size: 15px;
+    color: orange;
+}
+
+.contactSectionContainer{
+    display: flex;
+    place-items: center;
+    height: 100vh;
+}
+
+.contactSection {
+    margin-top: 50px;
+    display: flex;
+}
+
+.contactLeft {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    padding-left: 4%;
+    padding-top: 2%;
+}
+
+.contactRight {
+    width: 50%;
+}
+
+.contactRight form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 30px 30px 40px 30px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(75, 20, 20, 0.5));
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.contactRight form label {
+    width: 100%;
+    color: white;
+}
+
+.contactRight form input,
+textarea {
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.contactDetailsSection div {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contactDetailsSection h3 {
+    font-size: 20px;
+}
+
+.contactDetailsSection p {
+    font-size: 20px;
+}
+
+.contactLinksSection {
+    display: grid;
+    grid-template-columns: repeat(4, 8%);
+    gap: 20px;
+}
+
+/*  --------------------------------------------------------> CSS for Homepage End*/
+
+@keyframes myAnim {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1.4);
+    }
+}
+
+
+@keyframes ShakeTop {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 0;
+    }
+
+    10% {
+        transform: rotate(2deg);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        transform: rotate(2deg);
+    }
+}
+
+/* ----------------------Responsiveness---------------------- */
+
+/* ------------------------For Tablet------------------------ */
+
+@media screen and (max-width: 850px) {
+    .heroSection {
+        height:70vh;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons button {
+        color: white;
+        font-size: 1rem;
+        font-family: monospace;
+        box-shadow: 3px 3px 6px black;
+
+    }
+    .heroLeft{
+        width: 80%;
+    }
+    .heroLeft h1 {
+        font-size: 3rem;
+    }
+
+    .heroRight{
+        transform: scale(1);
+    }
+    .heroRight img {
+        width: 40%;
+    }
+
+    .servicesSectionContainer {
+        height: 120vh;
+    }
+
+    .servicesSection {
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        background-color: #f1dce0;
+        text-align: center;
+    }
+
+    .servicesSection h1 {
+        font-family: "Signika", sans-serif;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+        gap:25px
+    }
+
+    .service {
+        gap: 5px;
+    }
+
+    .service img {
+        width: 50%;
+        background: linear-gradient(rgba(27, 91, 163, 0.5), rgba(2, 0, 0, 0.5));
+        padding: 5px;
+        border-radius: 50%;
+    }
+
+    .service h3 {
+        font-family: "Signika", sans-serif;
+        font-size: 1.1rem;
+    }
+
+    .aboutSectionContainer {
+        display: flex;
+        place-items: center;
+        height: 110vh;
+    }
+
+    .aboutSection {
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+    }
+
+    .aboutLeft {
+        width: 30%;
+        padding: 10px;
+    }
+
+    .aboutLeft img {
+        width: 100%;
+    }
+
+    .aboutRight {
+        width: 100%;
+    }
+
+    .aboutRight h1 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    .aboutRight p {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    .aboutRight ul {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .aboutRight li {
+        list-style: none;
+        display: flex;
+        padding: 3px;
+        font-size: 1.1rem;
+    }
+
+    .groomersSection {
+        padding: 5%;
+    }   
+    .groomers {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5%;
+    }   
+    .groomer img {
+        margin: auto;
+        width: 50%;
+    }   
+    .groomer h1 {
+        font-size: 1rem;
+    }   
+    .groomer h3 {
+        font-size: 0.8rem;
+    }
+
+
+    .contactSection {
+        display: flex;
+    }
+
+    .contactLeft {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 5%;
+        padding-left: 4%;
+        padding-top: 2%;
+    }
+
+    .contactRight {
+        width: 50%;
+    }
+
+    .contactRight form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        padding: 30px 30px 40px 30px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(75, 20, 20, 0.5));
+        width: 120%;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    .contactRight form label {
+        width: 100%;
+        color: white;
+    }
+
+    .contactRight form input,
+    textarea {
+        border-radius: 10px;
+        padding: 10px 20px;
+        width: 100%;
+    }
+
+    .contactDetailsSection div {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .contactDetailsSection h3 {
+        font-size: 1rem;
+    }
+
+    .contactDetailsSection p {
+        font-size: 1rem;
+    }
+
+    .contactLinksSection {
+        display: grid;
+        grid-template-columns: repeat(4, 8%);
+        gap: 20px;
+    }
+
+
+    }
+
+/* ------------------------For Phone------------------------ */
+
+@media (max-width: 450px) {
+    .heroSection {
+        height: 70vh;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons button {
+        color: white;
+        font-size: 1rem;
+        padding: 0 10px;
+        font-family: monospace;
+        box-shadow: 3px 3px 6px black;
+
+    }
+
+    .heroLeft {
+        width: 80%;
+    }
+
+    .heroLeft h1 {
+        font-size: 1.5rem;
+    }
+
+    .heroRight{
+        width: 100%;
+        overflow:visible;
+    }
+
+    .heroRight img {
+        width: 50%;
+    }
+
+    .servicesSectionContainer {
+        margin-top: 40px;
+        height: auto;
+    }
+
+    .servicesSection {
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        background-color: #f1dce0;
+        text-align: center;
+    }
+
+    .servicesSection h1 {
+        font-family: "Signika", sans-serif;
+    }
+
+    .services {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+        padding: 0;
+    }
+
+    .aboutSectionContainer {
+        display: flex;
+        place-items: center;
+        height: auto;
+        margin-top: 40px;
+    }
+
+    .aboutSection {
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+    }
+
+    .aboutLeft {
+        width: 80%;
+        padding: 10px;
+    }
+    
+    .groomersSection {
+        margin-top: 40px;
+        height: auto;
+    }
+    
+    .groomers {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    .groomer img {
+        margin: auto;
+        width: 90%;
+    }
+    
+    
+    .contactSection {
+        display: flex;
+        flex-direction: column;
+        gap:25px;
+        height: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding: 0;
+    }
+    
+    .contactLeft {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding:0px;
+    }
+    
+    .contactRight {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .contactRight form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        padding: 15px 15px 20px 15px;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(36, 13, 13, 0.5));
+        width: 100%;
+    }
+    
+    .contactRight form label {
+        width: 100%;
+        color: white;
+    }
+    
+    .contactRight form input,
+    textarea {
+        border-radius: 10px;
+        padding: 5px 10px;
+        width: 100%;
+    }
+    
+    .contactDetailsSection div {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .contactDetailsSection h3 {
+        font-size: 1rem;
+    }
+    
+    .contactDetailsSection p {
+        font-size: 1rem;
+    }
+    
+    .contactLinksSection {
+        display: grid;
+        grid-template-columns: repeat(4, 8%);
+        gap: 20px;
+    }
+}
