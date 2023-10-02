@@ -34,7 +34,8 @@ const Service_cart = ({title,id,image,details,price}) => {
        const service={
         ServiceType:title,Name:name,Price:price,address:location,date:date,animalType:type};
        console.log(service)
-       
+        if(name!==""&&date!==""&&location!==""&&type!==""){
+
        try {
           const add=     await axios.post('https://dark-pink-rabbit-wear.cyclic.cloud/service/register',service, {
               headers: {
@@ -53,13 +54,24 @@ const Service_cart = ({title,id,image,details,price}) => {
       } catch (error) {
             console.log(error)
             toast({
-              title: 'Wrong Crendentials.',
-              description: "some think going wrong.",
+              title: 'Fail to book service',
+              description: "somethink going wrong.",
               status: 'error',
               duration: 2000,
               isClosable: true,
               position:'top'
             })
+        }
+      }
+      else{
+        toast({
+          title: 'Please fill all details.',
+          description: "some think going wrong.",
+          status: 'error',
+          duration: 2000,
+          isClosable: true,
+          position:'top'
+        })
       }
 
      }
