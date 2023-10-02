@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios'
 // 
 function ProductDetails() {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const {id} = useParams();
+  const [data,setdata] = useState(null)
 
+  useEffect(()=>{
+    axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/`)
+    .then((res)=>{
+      let data = res.data.data
+      const product = data.find((p) => p._id === id);
+      setdata(product)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+},[])
   const handleMouseMove = (e) => {
     // Calculate the position of the cursor relative to the MainImageContainer
     const boundingBox = e.currentTarget.getBoundingClientRect();

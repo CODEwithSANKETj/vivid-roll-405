@@ -9,9 +9,11 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../Redux/Prod_redux/actions'
 import store from '../Redux/store'
+import { Link } from 'react-router-dom'
 function Product_list() {
     let [data,setdata] = useState([])
-    const itemsPerPage = 6;
+    let [refresh,setrefresh] = useState(true)
+    const itemsPerPage = 9;
     const [currentPage, setCurrentPage] = useState(1)
     const dispatch = useDispatch()
     const cartData = useSelector((store)=>store.cart);
@@ -26,9 +28,42 @@ function Product_list() {
       dispatch(addToCart(item))
       //console.log('Product added',item);
     }
+    function filter(e){
+      e.preventDefault()
+      if(data.length>0){
+        const FilteredData = data.slice();
+        if(e.target.value!=='All'){
+          const final_data = FilteredData.filter((item)=>{
+            if(item.brand === e.target.value){
+              return true
+            }
+            return false
+          })
+          setdata(final_data)
+        }
+        else{
+          setrefresh(!refresh)
+        }
+        
+      }
+
+    }
     function sort(e){
       e.preventDefault()
-      console.log(e.target.value);
+      if(data.length>0){
+        const sortedData = data.slice();
+        if(e.target.value=="Asc"){
+          sortedData.sort((a,b)=>{
+            return a.price - b.price
+          })
+        }
+        if(e.target.value=='Des'){
+          sortedData.sort((a,b)=>{
+            return b.price - a.price
+          })
+        }
+        setdata(sortedData)
+      }
     }
     useEffect(()=>{
         axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/`)
@@ -39,7 +74,7 @@ function Product_list() {
         .catch((err)=>{
           console.log(err);
         })
-    },[])
+    },[refresh])
   return (
     <Main_Div>
         <Filter_div>
@@ -74,33 +109,38 @@ function Product_list() {
 
                 <FilterSection>
                     <FilterLabel>Filter by Brand:</FilterLabel>
-                    <Select>
-                    <option value="">All</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
+                    <Select onChange={filter}>
+                    <option value="All">All</option>
+                    <option value="PAWSINDIA">PAWSINDIA</option>
+                    <option value="WHISKAS">WHISKAS</option>
+                    <option value="ROYAL CANIN">ROYAL CANIN</option>
+                    <option value="Wiskers">Wiskers</option>
+                    <option value="VET LIFE">VET LIFE</option>
+
                     </Select>
                 </FilterSection>
                 </FilterContainer>
           </Product_filter_div>
     <Product_list_view_div>
     {data.length>0 && data.map((data,index)=>{
-        return <Product_item_div key={index}>
+        return <Link key={index} to={`/product_details/${data._id}`} >
+          <Product_item_div >
         <Product_img src={data.image}/>
-        <div></div>
+        
         <Product_detail>
             <Brand>
             <p>{data.brand}</p>
             </Brand>
-            
+            <Title>{data.title}</Title>
           <ProductPriceContainer>
             <Price>₹ {data.price}</Price>
             <CartIconContainer onClick={(e)=>addtocart(e,data)}>
                 <CartIcon src={cart_pic} alt="Cart Icon" />
             </CartIconContainer>
           </ProductPriceContainer>
-                    </Product_detail>
+          </Product_detail>
       </Product_item_div>
+        </Link>
     })}
           
             
@@ -130,6 +170,15 @@ function Product_list() {
 }
 
 export default Product_list
+const Title = styled.div`
+ max-width: 200px; /* Adjust the value as needed */
+
+/* Add ellipsis (...) for text overflow */
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+margin-bottom: 20px;
+`
 
 const Brand =styled.div`
 justify-content: center;
@@ -138,12 +187,14 @@ margin-left: 50px;
 `
 const ProductPriceContainer = styled.div`
   display: flex;
+  margin-top: 10px;
   margin-top: -20px;
   //border: 1px solid red;
   justify-content: space-between;
   align-items: center;
   width: 200px;
   gap: 5px;
+  margin-bottom: 4px;
   /* Other styles for the container */
 `;
 
@@ -177,7 +228,10 @@ const CartIcon = styled.img`
 const Product_detail = styled.div`
 justify-content: center;
 align-items: center;
-
+//border: 1px solid red;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+background-color: #fddab8;
 `
 
 const Product_img = styled.img`
@@ -190,14 +244,15 @@ const Product_img = styled.img`
 const Product_item_div = styled.div`
     background-color: #ffffff;
     border-radius: 8px;
-    padding-bottom: 10px;
+    //padding-bottom: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     width: 200px;
-    height: 250px;
+    height: 275px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 
 `
 const Filter_icon = styled.img`
@@ -224,7 +279,7 @@ const Filter_option = styled.div`
   } 
 `
 const Product_list_view_div = styled.div`
-background-color: #f0deee;
+background-color: #fafafa;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 4 columns */
   gap: 70px;
@@ -276,7 +331,7 @@ top: 0;
 
 `
 const Product_div = styled.div`
-  background-color: #f0deee;
+  background-color: #ffffff;
   display: flex;
 
   /* Additional styles for grid items if needed */
@@ -285,13 +340,13 @@ const Product_div = styled.div`
 const Filter_div = styled.div`
 display: flex;
 justify-content: space-around;
-background-color: #f0deee;
+background-color: #ffffff;
 width: 80%;
 `
 
 const Main_Div = styled.div`
 border: 1px solid black;
-background-color: #f0deee;
+background-color: #ffffff;
 display: flex;
 align-items: center;
 flex-direction: column;
