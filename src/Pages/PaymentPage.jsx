@@ -17,11 +17,13 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export const Paymentpage = () => {
   const [email, setemail] = useState(false);
   const [otp, setotp] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
+  const navigate = useNavigate()
 
   const handelcheckout = async () => {
     console.log(email);
@@ -57,12 +59,14 @@ export const Paymentpage = () => {
       } else {
         onClose();
         toast({
-          title: "Account created.",
+          title: "Payment Successfull.",
           description: "Otp verified successfully.",
           status: "success",
           duration: 9000,
           isClosable: true,
         });
+        navigate('/')
+        
       }
     } catch (error) {
       console.log(error);

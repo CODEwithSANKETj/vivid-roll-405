@@ -15,7 +15,9 @@ function Navbar() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 const cartData = useSelector((store)=>store.cart);
-console.log(cartData.cart);
+const isAuthenticated = useSelector((store) => store.auth.isAuth);
+console.log(isAuthenticated,'navbar');
+//console.log(cartData.cart);
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
@@ -123,14 +125,10 @@ console.log(cartData.cart);
             Contact
           </Link>
           <NavLink to="/allproducts">Products</NavLink>
-          <Button colorScheme="orange" className="loginBtns">
-            Login
-          </Button>
-          {false && (
-            <Button colorScheme="red" className="loginBtns">
-              Logout
-            </Button>
-          )}
+          {<Button colorScheme="orange" className="loginBtns">
+            {isAuthenticated?'Logout':'Login'}
+          </Button>}
+          
         </div>
 
         <div className="cartContainer">

@@ -6,8 +6,10 @@ import { Spinner } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../Redux/store';
 import { addToCart, calculate, changequantity } from '../Redux/Prod_redux/actions';
+import { useToast } from '@chakra-ui/react';
 function ProductDetails() {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const toast = useToast();
   const {id} = useParams();
   const [data,setdata] = useState(null)
   const [quantity,setquantiy] = useState(1)
@@ -16,7 +18,30 @@ function ProductDetails() {
   console.log(cartData);
   function Addtocart(e,item){
     e.preventDefault()
-    dispatch(addToCart(item))
+    // Check if the product already exists in the cart
+    //console.log(cartData.cart,'data');
+  const productExists = cartData.cart.some((cartItem) => cartItem._id === item._id);
+
+  if (productExists) {
+    // Show a toast notification indicating that the product already exists
+    toast({
+      title: 'Product already in cart',
+      description: 'This product is already in your cart.',
+      status: 'info', // You can choose the toast status
+      duration: 3000, // Duration for the toast
+      isClosable: true,
+    });
+  } else {
+    // If the product doesn't exist, add it to the cart
+    dispatch(addToCart(item));
+    toast({
+      title: 'Product added to cart', // Set the title to "Product added to cart"
+      status: 'success', // Use 'success' status for a green color
+      duration: 3000, // Duration for the toast
+      isClosable: true,
+    });
+    // Optionally, you can show a success toast here if needed
+  }
     //console.log('Product added',item);
   }
   useEffect(()=>{

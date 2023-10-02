@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login, signup } from "../Redux/Auth_Reducer/action";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  
 
   const [signupdata, setsignupData] = useState({
     name: "",
@@ -30,7 +32,12 @@ const LoginSignup = () => {
     e.preventDefault();
     console.log(logindata);
     dispatch(login(logindata));
-    navigate("/");
+    if (location.state && location.state.from) {
+      navigate(location.state.from);
+    } else {
+      // If there's no `from` location, you can provide a default redirect
+      navigate('/');
+    }
   };
 
   const handleSignUpClick = () => {
