@@ -5,7 +5,7 @@ import "../CSS/service.css";
 import Service_cart from '../Components/Service_cart';
 
 
-const Service_provider = () => {
+const Service= () => {
  
 
     const [data,setData]=useState([]);
@@ -46,4 +46,4 @@ const Service_provider = () => {
 }
 
 
-export default Service_provider
+export default Service
