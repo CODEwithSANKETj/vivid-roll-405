@@ -3,12 +3,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login, signup } from "../Redux/Auth_Reducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-  
+  const location = useLocation()
+ // console.log(location);
 
   const [signupdata, setsignupData] = useState({
     name: "",
@@ -30,7 +31,7 @@ const LoginSignup = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(logindata);
+    console.log(location,'at login');
     dispatch(login(logindata));
     if (location.state && location.state.from) {
       navigate(location.state.from);

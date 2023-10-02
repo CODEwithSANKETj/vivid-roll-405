@@ -18,13 +18,17 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { empty } from "../Redux/Prod_redux/actions";
 export const Paymentpage = () => {
   const [email, setemail] = useState(false);
   const [otp, setotp] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
+  const location = useLocation();
+  console.log(location , 'at payment');
   const handelcheckout = async () => {
     console.log(email);
     try {
@@ -57,6 +61,7 @@ export const Paymentpage = () => {
           isClosable: true,
         });
       } else {
+        dispatch(empty())
         onClose();
         toast({
           title: "Payment Successfull.",
@@ -65,7 +70,8 @@ export const Paymentpage = () => {
           duration: 9000,
           isClosable: true,
         });
-        navigate('/')
+        
+        //navigate('/')
         
       }
     } catch (error) {

@@ -40,7 +40,7 @@ function Product_list() {
     //////////////////////////
     const dispatch = useDispatch()
     const cartData = useSelector((store)=>store.cart);
-    //console.log(cartData);
+    console.log(cartData);
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
     };
@@ -94,7 +94,7 @@ function Product_list() {
 
       }
     }
-  }
+  
   function sort(e) {
     e.preventDefault();
     if (data.length > 0) {

@@ -1,4 +1,4 @@
-import { ADD_TO_CART, CALCULATE_TOTAL, CHANGE_QUANTITY, DELETE_FROM_CART } from "../action_types";
+import { ADD_TO_CART, CALCULATE_TOTAL, CHANGE_QUANTITY, DELETE_FROM_CART, EMPTY_CART } from "../action_types";
 
 const init = {
   cart: [],
@@ -105,7 +105,10 @@ export  function Reducer(state = init, action) {
       }
       console.log(total_);
       return {...state , total_amount : total_}
-
+    
+    case EMPTY_CART : 
+      console.log('Empty');
+      return init
 
     default:
       return state;
