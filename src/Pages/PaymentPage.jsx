@@ -1,7 +1,81 @@
-import React from "react";
+import { useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
+import axios from "axios";
 export const Paymentpage = () => {
+  const [email, setemail] = useState(false);
+  const [otp, setotp] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+
+  const handelcheckout = async () => {
+    console.log(email);
+    try {
+      const res = await axios.post(
+        "https://dark-pink-rabbit-wear.cyclic.cloud/service/request_otp",
+        { email: email }
+      );
+      if (res.error) {
+        throw new Error(res.error);
+      } else {
+        onOpen();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handelverify = async () => {
+    console.log(email);
+    try {
+      const res = await axios.post(
+        "https://dark-pink-rabbit-wear.cyclic.cloud/service/verify_otp",
+        { otp: otp }
+      );
+      if (res.error) {
+        // throw new Error(res.error);
+        toast({
+          title: `Invalid OTP.`,
+          status: "error",
+          isClosable: true,
+        });
+      } else {
+        onClose();
+        toast({
+          title: "Account created.",
+          description: "Otp verified successfully.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: `Invalid OTP.`,
+        status: "error",
+        isClosable: true,
+      });
+    }
+  };
+
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
   return (
     <DIV>
       <div className="maincontainer" style={{ paddingTop: "50px" }}>
@@ -11,7 +85,6 @@ export const Paymentpage = () => {
             <div className="col-md-4 order-md-2 mb-4">
               <h4 className="d-flex justify-content-between align-items-center mb-3">
                 <span className="text-muted">Your cart</span>
-                <span className="badge badge-secondary badge-pill">3</span>
               </h4>
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -86,6 +159,8 @@ export const Paymentpage = () => {
                     className="form-control"
                     id="email"
                     placeholder="you@example.com"
+                    required
+                    onChange={(e) => setemail(e.target.value)}
                   />
                   <div className="invalid-feedback">
                     Please enter a valid email address for shipping updates.
@@ -268,26 +343,48 @@ export const Paymentpage = () => {
                     backgroundColor: "#dd6b20",
                     border: "none",
                   }}
+                  onClick={handelcheckout}
                 >
                   Continue to checkout
                 </button>
+                <Modal
+                  initialFocusRef={initialRef}
+                  finalFocusRef={finalRef}
+                  isOpen={isOpen}
+                  onClose={onClose}
+                  backgroundColor="#f8e7e7"
+                >
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Enter OTP</ModalHeader>
+                    <ModalCloseButton />
+
+                    <ModalBody pb={6}>
+                      <FormLabel>OTP sent to {email}</FormLabel>
+                      <FormControl>
+                        <Input
+                          ref={initialRef}
+                          placeholder="Otp"
+                          type="text"
+                          onChange={(e) => setotp(e.target.value.toString())}
+                        />
+                      </FormControl>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <Button
+                        colorScheme="orange"
+                        mr={3}
+                        onClick={handelverify}
+                      >
+                        Verify
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
               </form>
             </div>
           </div>
-          {/* <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="mb-1">© 2020-2021 therichpost.com</p>
-            <ul className="list-inline">
-              <li className="list-inline-item">
-                <a href="#">Privacy</a>
-              </li>
-              <li className="list-inline-item">
-                <a href="#">Terms</a>
-              </li>
-              <li className="list-inline-item">
-                <a href="#">Support</a>
-              </li>
-            </ul>
-          </footer> */}
         </div>
       </div>
     </DIV>
