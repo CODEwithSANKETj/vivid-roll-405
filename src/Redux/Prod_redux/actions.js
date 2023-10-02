@@ -1,4 +1,4 @@
-import { ADD_TO_CART, CALCULATE_TOTAL, CHANGE_QUANTITY, DELETE_FROM_CART } from '../action_types';
+import { ADD_TO_CART, CALCULATE_TOTAL, CHANGE_QUANTITY, DELETE_FROM_CART, EMPTY_CART } from '../action_types';
 export const addToCart = (item) => ({
     type: ADD_TO_CART,
     payload: item, // You can pass the item you want to add to the cart as payload
@@ -20,4 +20,7 @@ export const calculate=()=>({
   type : CALCULATE_TOTAL,
   payload : ''
 })
-    
+export const empty=()=>( {
+    type:EMPTY_CART,
+    payload : '',
+  })

@@ -15,33 +15,35 @@ import { Spinner } from "@chakra-ui/react";
 function Product_list() {
   const toast = useToast();
 
-  let [data, setdata] = useState([]);
-  let [refresh, setrefresh] = useState(true);
-  let [isloading, setisloading] = useState(false);
-  const itemsPerPage = 9;
-  ///////PAGINATION////
-  const [totalItems, setTotalItems] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  //////////////////
-  ///////Search Params///////
-  const [searchParams, setSearchparams] = useSearchParams();
-  const handleFilterClick = (category) => {
-    // Update the 'category' query parameter when a button is clicked
-    setSearchparams({ category });
-    setCurrentPage(1);
-  };
-  const handleAllClick = () => {
-    // If "All" is clicked, set the 'category' query parameter to an empty string
-    setSearchparams({ category: "" });
-    setCurrentPage(1);
-  };
-  //////////////////////////
-  const dispatch = useDispatch();
-  const cartData = useSelector((store) => store.cart);
-  //console.log(cartData);
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
+
+    let [data,setdata] = useState([])
+    let [refresh,setrefresh] = useState(true)
+    let [isloading,setisloading] = useState(false)
+    const itemsPerPage = 9;
+    ///////PAGINATION////
+    const [totalItems, setTotalItems] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1)
+    //////////////////
+    ///////Search Params///////
+    const [searchParams , setSearchparams] = useSearchParams()
+    const handleFilterClick = (category) => {
+      // Update the 'category' query parameter when a button is clicked
+      setSearchparams({ category });
+      setCurrentPage(1);
+    };
+    const handleAllClick = () => {
+      // If "All" is clicked, set the 'category' query parameter to an empty string
+      setSearchparams({ category: '' });
+      setCurrentPage(1);
+    };
+    //////////////////////////
+    const dispatch = useDispatch()
+    const cartData = useSelector((store)=>store.cart);
+    console.log(cartData);
+    const handlePageChange = (newPage) => {
+      setCurrentPage(newPage);
+    };
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
@@ -90,7 +92,8 @@ function Product_list() {
         setrefresh(!refresh);
       }
     }
-  }
+
+  
 
   function sort(e) {
     e.preventDefault();

@@ -1,10 +1,12 @@
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import React from 'react';
 function Private({ children }) {
   const isAuthenticated = useSelector((state) => state.auth.isAuth);
   const navigate = useNavigate();
-
+  const location = useLocation()
+  location.state = location.pathname
+  console.log(location,'at private');
   React.useEffect(() => {
     if (!isAuthenticated) {
       // If the user is not authenticated, navigate to the login page

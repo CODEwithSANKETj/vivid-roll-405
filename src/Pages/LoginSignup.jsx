@@ -3,16 +3,20 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, signup } from "../Redux/Auth_Reducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { Toast } from "bootstrap";
 import { useToast } from "@chakra-ui/react";
+
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const location = useLocation();
   const toast = useToast();
 
   const name = useSelector((store) => store.auth.name);
+
 
   const [signupdata, setsignupData] = useState({
     name: "",
@@ -36,6 +40,7 @@ const LoginSignup = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     // console.log(logindata);
     if (logindata.email == "admin@gmail.com") {
       if (logindata.password == "avengers") {
@@ -49,6 +54,7 @@ const LoginSignup = () => {
           isClosable: true,
         });
       }
+
     } else {
       dispatch(login(logindata));
       if (location.state && location.state.from) {
