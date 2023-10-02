@@ -17,7 +17,9 @@ import github from "../Images/github.png";
 import { PhoneIcon, EmailIcon, LinkIcon } from "@chakra-ui/icons";
 import { Button, Heading } from "@chakra-ui/react";
 import Footer from "../Components/Footer";
+import { useNavigate } from "react-router-dom";
 function Home() {
+  const navigate = useNavigate()
   return (
 
     <>
@@ -62,7 +64,7 @@ function Home() {
             </Heading>
 
             <div className="services">
-              <div className="service">
+              <div className="service" onClick={()=>navigate('/services/2')}>
                 <img src={petgrooming} alt="" />
                 <Heading as={"h3"}>Pet Grooming</Heading>
                 <p>
@@ -71,7 +73,7 @@ function Home() {
                 </p>
               </div>
 
-              <div className="service">
+              <div className="service" onClick={()=>navigate('/services/3')}>
                 <img src={veternary} alt="" />
                 <Heading as={"h3"}>Veternary Care</Heading>
                 <p>
@@ -80,7 +82,7 @@ function Home() {
                 </p>
               </div>
 
-              <div className="service">
+              <div className="service" onClick={()=>navigate('/services/1')}>
                 <img src={petgrooming} alt="" />
                 <Heading as={"h3"}>Service 3</Heading>
                 <p>
@@ -89,7 +91,7 @@ function Home() {
                 </p>
               </div>
 
-              <div className="service">
+              <div className="service" onClick={()=>navigate('/services/0')}>
                 <img src={veternary} alt="" />
                 <Heading as={"h3"}>Service 4</Heading>
                 <p>

@@ -1,18 +1,19 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Heading, Text } from '@chakra-ui/react';
 
-import React from 'react';
+
+
 import { Card, CardHeader, CardBody,Image,Stack,Heading,Text,Button, CardFooter } from '@chakra-ui/react'
 
 
 import "../CSS/service.css";
 import Service_cart from '../Components/Service_cart';
+import { useParams } from 'react-router-dom';
 
 
 const Service= () => {
- 
+    const {id} = useParams()
 
     const [data,setData]=useState([]);
 
@@ -44,9 +45,10 @@ const Service= () => {
       </div>
 
         {
-            data.map((item)=>(
-                <Service_cart key={item._id} {...item}/>
-            ))
+            // data.map((item)=>(
+            //     <Service_cart key={item._id} {...item}/>
+            // ))
+            <Service_cart {...data[id]}/>
         }
 
         
