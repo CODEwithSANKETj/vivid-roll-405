@@ -14,6 +14,7 @@ import { addToCart } from '../Redux/Prod_redux/actions'
 import store from '../Redux/store'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Skeleton, Spinner } from '@chakra-ui/react'
+import ConditionalNavbar from '../Components/ContitionalNavbar';
 function Product_list() {
   const toast = useToast();
 
@@ -138,6 +139,8 @@ function Product_list() {
   }, [refresh, currentPage, searchParams]);
 
   return (
+    <>
+      <ConditionalNavbar/>
     <Main_Div>
       {/* //Filter Ribbon Starts here */}
       <Filter_Ribbon>
@@ -249,7 +252,8 @@ function Product_list() {
           Next
         </PaginationButton>
       </Pagination>
-    </Main_Div>
+      </Main_Div>
+      </>
   );
 }
 

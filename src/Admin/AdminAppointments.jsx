@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AdminNavbar from "./AdminNavbar";
 import styled from "styled-components";
 import axios from "axios";
+import AdminMainNavbar from "./AdminMainNavbar";
 
 function AdminAppointments() {
   // const { productsData, loading, error } = store;
@@ -13,10 +14,7 @@ function AdminAppointments() {
   const getAllAppointments = async () => {
     try {
       let res = await axios.get(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/service/",
-        {
-          headers: {},
-        }
+        "https://dark-pink-rabbit-wear.cyclic.cloud/service/getappointment"
       );
       console.log(res.data);
       setAllAppointments(res.data.data);
@@ -31,12 +29,13 @@ function AdminAppointments() {
 
   return (
     <Box pb={"50px"}>
+      <AdminMainNavbar/>
       <AdminNavbar />
       <CONTENT>
         <div className="mainContainer">
           <div className="adminOptions">
             <div className="sortingSection">
-              <select value={sorting}>
+              <select >
                 <option value="">Sort By Price</option>
                 <option value="asc">Low To High</option>
                 <option value="desc">High To Low</option>
@@ -49,13 +48,27 @@ function AdminAppointments() {
                 <th>Id</th>
                 <th>Service</th>
                 <th>Fees</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Pet Type</th>
+                <th>User Name</th>
               </tr>
             </thead>
             <tbody id="package_tbody">
               {
-                //We'll map appointments over here
+                allAppointments.map((appointment, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{appointment._id}</td>
+                      <td>{appointment.ServiceType}</td>
+                      <td>{appointment.Price}</td>
+                      <td>
+                        { appointment.animalType}
+                      </td>
+                      <td>
+                        {appointment.Name}
+                      </td>
+                    </tr>
+                  );
+                })
               }
             </tbody>
           </table>

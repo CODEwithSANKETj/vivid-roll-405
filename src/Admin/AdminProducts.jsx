@@ -4,6 +4,7 @@ import AdminNavbar from "./AdminNavbar";
 import styled from "styled-components";
 import "./admin.css";
 import axios from "axios";
+import AdminMainNavbar from "./AdminMainNavbar";
 
 function AdminProducts() {
   // const { productsData, loading, error } = store;
@@ -29,15 +30,16 @@ function AdminProducts() {
 
   return (
     <Box pb={"50px"}>
+      <AdminMainNavbar/>
       <AdminNavbar />
       <CONTENT>
         <div className="mainContainer">
           <div className="adminOptions">
             <div className="searchbarSection">
-              <input placeholder="Search..." value={searching} />
+              <input placeholder="Search..."   />
             </div>
             <div className="sortingSection">
-              <select name="sorting" value={sorting} id="sorting">
+              <select name="sorting"  id="sorting">
                 <option value="">Sort By Price</option>
                 <option value="asc">Low To High</option>
                 <option value="desc">High To Low</option>
@@ -57,7 +59,7 @@ function AdminProducts() {
             <tbody id="package_tbody">
               {allProducts.map((product, index) => {
                 return (
-                  <tr key={product.id}>
+                  <tr key={product._id}>
                     <td>{index + 1}</td>
                     <td>{product.title}</td>
                     <td>{product.price}</td>
