@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
-
+import { useDispatch, useSelector } from 'react-redux';
+import store from '../Redux/store';
+import { deleteFromCart } from '../Redux/Prod_redux/actions';
 function Cart_item({item}) {
     const [quantity , setquantity] = useState(1)
-
+    const dispatch = useDispatch()
+  const cartData = useSelector((store)=>store.cart);
+  console.log(cartData);
   return (
     <div class="row gy-3">
                     <div class="col-lg-5">
                       <div class="me-lg-5">
                         <div class="d-flex">
-                          <img src="https://pawsindia.com/cdn/shop/products/1_ee00a414-7e44-4ab6-8129-aadda2f19498.png?v=1685797240" class="border rounded me-3" style={{width: "96px", height: "96px"}}  />
+                          <img src={item.image} class="border rounded me-3" style={{width: "96px", height: "96px"}}  />
                           <div class="">
-                            <a href="#" class="nav-link">{item.title}</a>
+                            <a href="#" class="nav-link">{item.brand}</a>
                           </div>
                         </div>
                       </div>
@@ -30,8 +34,8 @@ function Cart_item({item}) {
                       </div>
                     </div>
                     <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
-                      <div class="float-md-end">
-                        <a href="#" class="btn btn-light border text-danger icon-hover-danger"> Remove</a>
+                      <div onClick={()=>dispatch(deleteFromCart(item))} class="float-md-end">
+                        <a  href="#" class="btn btn-light border text-danger icon-hover-danger"> Remove</a>
                       </div>
                     </div>
                   </div>

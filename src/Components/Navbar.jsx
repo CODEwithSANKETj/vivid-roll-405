@@ -6,10 +6,17 @@ import { NavLink } from "react-router-dom";
 import { Link, animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
 import { Link as ClickLink} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import store from "../Redux/store";
 function Navbar() {
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
+  //////cart value///////
+  const dispatch = useDispatch()
+  const cartData = useSelector((store)=>store.cart);
+  console.log(cartData.cart);
+  ///////////////////////
 
   return (
     <NAVBAR className="Navbar">
@@ -30,10 +37,12 @@ function Navbar() {
       </div>
 
       <div className="cartContainer">
-        <div className="shoppingcarticon">
-          <div className="count">2</div>
-          <img src={shoppingcart} alt="shoppingcarticon" />
-        </div>
+        <ClickLink to='/cart'>
+          <div className="shoppingcarticon">
+            <div className="count">{cartData.cart.length}</div>
+            <img src={shoppingcart} alt="shoppingcarticon" />
+          </div>
+        </ClickLink>
 
         <div className="wishlisticon">
           <div className="count">2</div>

@@ -9,18 +9,38 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../Redux/Prod_redux/actions'
 import store from '../Redux/store'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Skeleton, Spinner } from '@chakra-ui/react'
 function Product_list() {
     let [data,setdata] = useState([])
     let [refresh,setrefresh] = useState(true)
+    let [isloading,setisloading] = useState(false)
     const itemsPerPage = 9;
+    ///////PAGINATION////
+    const [totalItems, setTotalItems] = useState(0);
     const [currentPage, setCurrentPage] = useState(1)
+    //////////////////
+    ///////Search Params///////
+    const [searchParams , setSearchparams] = useSearchParams()
+    const handleFilterClick = (category) => {
+      // Update the 'category' query parameter when a button is clicked
+      setSearchparams({ category });
+      setCurrentPage(1);
+    };
+    const handleAllClick = () => {
+      // If "All" is clicked, set the 'category' query parameter to an empty string
+      setSearchparams({ category: '' });
+      setCurrentPage(1);
+    };
+    //////////////////////////
     const dispatch = useDispatch()
     const cartData = useSelector((store)=>store.cart);
     //console.log(cartData);
     const handlePageChange = (newPage) => {
       setCurrentPage(newPage);
     };
+   
+
     const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
     function addtocart(e,item){
@@ -66,31 +86,44 @@ function Product_list() {
       }
     }
     useEffect(()=>{
-        axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/`)
+      setisloading(true)
+      const queryParams = new URLSearchParams();
+      queryParams.append('page', currentPage);
+      queryParams.append('limit', 9);
+      const category = searchParams.get('category');
+      if (category) {
+        queryParams.append('category', category);
+      }
+      const queryString = queryParams.toString();
+      console.log(queryString);
+        axios.get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/?${queryString}`)
         .then((res)=>{
-          console.log(res.data.data);
+          setisloading(false)
+          console.log(res.data.total)
+          setTotalItems(res.data.total)
           setdata(res.data.data)
         })
         .catch((err)=>{
           console.log(err);
         })
-    },[refresh])
+    },[refresh,currentPage,searchParams])
   return (
     <Main_Div>
         <Filter_div>
-            <Filter_option>
+            <Filter_option  onClick={handleAllClick}>
+            <Filter_icon src={bird_pic}/>
+                All Types
+            </Filter_option>
+            <Filter_option onClick={() => handleFilterClick('cat')}>
                 <Filter_icon src={cat_pic}/>
                 Cat Food
             </Filter_option>
-            <Filter_option>
-            <Filter_icon src={dog_pic}/>
-                Dog Food
+            <Filter_option onClick={() => handleFilterClick('dog')} >
+              <Filter_icon src={dog_pic}  />
+                  Dog Food
             </Filter_option>
-            <Filter_option>
-            <Filter_icon src={bird_pic}/>
-                Bird Food
-            </Filter_option>
-            <Filter_option>
+            
+            <Filter_option onClick={() => handleFilterClick('dog_toy')}>
             <Filter_icon src={toys_pic}/>
                 Toys
             </Filter_option>
@@ -122,7 +155,13 @@ function Product_list() {
                 </FilterContainer>
           </Product_filter_div>
     <Product_list_view_div>
-    {data.length>0 && data.map((data,index)=>{
+    {isloading ? <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/>  :data.length>0 && data.map((data,index)=>{
         return <Link key={index} to={`/product_details/${data._id}`} >
           <Product_item_div >
         <Product_img src={data.image}/>
@@ -141,8 +180,9 @@ function Product_list() {
           </Product_detail>
       </Product_item_div>
         </Link>
-    })}
-          
+    }) }
+    {}
+       
             
     </Product_list_view_div>
 
@@ -156,11 +196,11 @@ function Product_list() {
           Previous
         </PaginationButton>
         <PaginationInfo>
-          Page {currentPage} of {Math.ceil(data.length / itemsPerPage)}
+          Page {currentPage} of {Math.ceil(totalItems/ itemsPerPage)}
         </PaginationInfo>
         <PaginationButton
           onClick={() => handlePageChange(currentPage + 1)}
-          disabled={endIndex >= data.length}
+          disabled={endIndex >= totalItems}
         >
           Next
         </PaginationButton>
