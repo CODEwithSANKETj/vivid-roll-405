@@ -36,7 +36,7 @@ function Navbar() {
           <HamburgerIcon onClick={() => setIsHamburgerOpen(true)} />
         </div>
 
-        <div className="logoSection" onClick={()=>navigate("/")}>
+        <div className="logoSection" onClick={() => navigate("/")}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
 
@@ -47,7 +47,7 @@ function Navbar() {
           </div>
 
           <div className="wishlisticon">
-            <div className="count">2</div>
+            {/* <div className="count">2</div> */}
             <img src={wishlisticon} alt="wishlisticon" />
           </div>
         </div>
@@ -107,7 +107,7 @@ function Navbar() {
       </div>
 
       <div className="Navbar">
-        <div className="logoSection" onClick={()=>navigate("/")}>
+        <div className="logoSection" onClick={() => scrollToTop()}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
         <div className="linksSection">
@@ -150,7 +150,7 @@ function Navbar() {
           </div>
 
           <div className="wishlisticon">
-            <div className="count">2</div>
+            {/* <div className="count">2</div> */}
             <img src={wishlisticon} alt="wishlisticon" />
           </div>
         </div>
