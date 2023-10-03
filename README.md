@@ -59,7 +59,7 @@ For any inquiries or support, you can reach us at below emails:
 
 |  HOMEPAGE - Doctor Toggle OFF |  HOMEPAGE - Doctor Toggle ON |
 |:-----------------------------:|:---------------------------:|
-| ![HOMEPAGE - Doctor Toggle OFF](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/0858f1c1-3051-495e-9287-4f66378c1fd2) | ![HOMEPAGE - Doctor Toggle ON](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/cc3fb3fc-3663-4f89-a265-650eea2897e0) |
+| ![HOMEPAGE](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/Home.png) |
 
 | Animated Components | ABOUT |
 |:-------------------:|:-----:|
