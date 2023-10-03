@@ -3,9 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, signup } from "../Redux/Auth_Reducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import { Toast } from "bootstrap";
 import { useToast } from "@chakra-ui/react";
+import loginbg from "../Images/loginbg.jpg";
 
 const LoginSignup = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
@@ -16,7 +15,6 @@ const LoginSignup = () => {
   const toast = useToast();
 
   const name = useSelector((store) => store.auth.name);
-
 
   const [signupdata, setsignupData] = useState({
     name: "",
@@ -54,7 +52,6 @@ const LoginSignup = () => {
           isClosable: true,
         });
       }
-
     } else {
       dispatch(login(logindata));
       if (location.state && location.state.from) {
@@ -175,27 +172,16 @@ const DIV = styled.div`
   /* @import url("@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');"); */
   display: flex;
   justify-content: space-around;
-  margin: auto;
   align-items: center;
   height: 100vh;
-  border: 1px solid black;
+  width: 100%;
+  background: linear-gradient(to right, #d88888, #c485d1);
+
   * {
     box-sizing: border-box;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
   }
-
-  /* body {
-    background: #f6f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: "Montserrat", sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
-    border: 1px solid red;
-  } */
 
   h1 {
     font-weight: bold;
@@ -251,8 +237,13 @@ const DIV = styled.div`
     border-color: #ffffff;
   }
 
+  button.ghost:hover {
+    background-color: white;
+    color: black;
+  }
+
   form {
-    background-color: #ffffff;
+    background-color: #faeaea;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,7 +254,7 @@ const DIV = styled.div`
   }
 
   input {
-    background-color: #eee;
+    background-color: white;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
@@ -277,7 +268,7 @@ const DIV = styled.div`
     position: relative;
     overflow: hidden;
     width: 70%;
-    max-width: 100%;
+    max-width: 900px;
     min-height: 480px;
     height: 70%;
   }
@@ -343,9 +334,8 @@ const DIV = styled.div`
   }
 
   .overlay {
-    background: #f48a6d;
-    background: -webkit-linear-gradient(to right, #e06d59, #f48a6d);
-    background: linear-gradient(to right, #e06d59, #f48a6d);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+      url(${loginbg});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;

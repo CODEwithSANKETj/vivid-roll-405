@@ -1,13 +1,11 @@
-
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: "Signika", sans-serif;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Signika", sans-serif;
 }
 
-body{
-    background-color: #e7d8d8;
-    width: 100%;
+body {
+  background-color: #e7d8d8;
+  width: 100%;
 }
-

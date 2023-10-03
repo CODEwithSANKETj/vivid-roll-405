@@ -11,10 +11,10 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 function AdminMainNavbar() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   return (
     <div className="Navbar">
@@ -27,22 +27,30 @@ function AdminMainNavbar() {
       </div>
 
       <div className="nav-buttons">
-        <Button colorScheme="red" onClick={onOpen}>Log out</Button>
+        <Button colorScheme="red" onClick={onOpen}>
+          Log out
+        </Button>
       </div>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Confirm Logout</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            Are you sure you want to logout?
-          </ModalBody>
+          <ModalBody>Are you sure you want to logout?</ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='red' mr={3} onClick={()=>{setTimeout(() => {
-              navigate("/");
-            }, 1000)}}>Yes</Button>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button
+              colorScheme="red"
+              mr={3}
+              onClick={() => {
+                setTimeout(() => {
+                  navigate("/");
+                }, 1000);
+              }}
+            >
+              Yes
+            </Button>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
               Cancel
             </Button>
           </ModalFooter>

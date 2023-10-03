@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react";
 import logo from "../Images/logo.png";
 import shoppingcart from "../Images/shopping-cart.gif";
 import wishlisticon from "../Images/wishlist-icon.gif";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link, animateScroll as scroll } from "react-scroll";
 import "./Navbar.css";
@@ -10,7 +10,19 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGOUT } from "../Redux/action_types";
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
+
 function Navbar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,6 +40,7 @@ function Navbar() {
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
+  const location = useLocation();
 
   return (
     <>
@@ -36,7 +49,7 @@ function Navbar() {
           <HamburgerIcon onClick={() => setIsHamburgerOpen(true)} />
         </div>
 
-        <div className="logoSection" onClick={()=>navigate("/")}>
+        <div className="logoSection" onClick={() => navigate("/")}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
 
@@ -47,7 +60,7 @@ function Navbar() {
           </div>
 
           <div className="wishlisticon">
-            <div className="count">2</div>
+            {/* <div className="count">2</div> */}
             <img src={wishlisticon} alt="wishlisticon" />
           </div>
         </div>
@@ -107,7 +120,7 @@ function Navbar() {
       </div>
 
       <div className="Navbar">
-        <div className="logoSection" onClick={()=>navigate("/")}>
+        <div className="logoSection" onClick={() => scrollToTop()}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
         <div className="linksSection">
@@ -150,22 +163,49 @@ function Navbar() {
           </div>
 
           <div className="wishlisticon">
-            <div className="count">2</div>
+            {/* <div className="count">2</div> */}
             <img src={wishlisticon} alt="wishlisticon" />
           </div>
         </div>
 
         <div className="nav-buttons">
           {!auth ? (
-            <Button onClick={() => navigate("/login")} colorScheme="orange">
+            <Button
+              onClick={() => navigate("/login", { state: { from: location } })}
+              colorScheme="orange"
+            >
               Login
             </Button>
           ) : (
-            <Button onClick={logout} colorScheme="red">
+            <Button onClick={onOpen} colorScheme="red">
               Logout
             </Button>
           )}
         </div>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Confirm Logout</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>Are you sure you want to logout?</ModalBody>
+
+            <ModalFooter>
+              <Button
+                colorScheme="red"
+                mr={3}
+                onClick={() => {
+                  logout();
+                  onClose();
+                }}
+              >
+                Yes
+              </Button>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Cancel
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </div>
     </>
   );
