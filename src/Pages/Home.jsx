@@ -69,8 +69,7 @@ function Home() {
                 <img src={petgrooming} alt="" />
                 <Heading as={"h3"}>Pet Grooming</Heading>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adfacere saepe dolore
-                  natus et nam, perferendis at rem.
+                Transform your pet's appearance and well-being with our expert Pet Grooming Services
                 </p>
               </div>
 
@@ -78,26 +77,23 @@ function Home() {
                 <img src={veternary} alt="" />
                 <Heading as={"h3"}>Veternary Care</Heading>
                 <p>
-                  Lorem ipsum dolor sit amet con numquam dicta facere saepe
-                  dolore natus et nam, perferendis at rem.
+                Trust our experienced team for compassionate Veterinary Care, ensuring your pet's health and happiness
                 </p>
               </div>
 
               <div className="service" onClick={()=>navigate('/services/1')}>
                 <img src={petgrooming} alt="" />
-                <Heading as={"h3"}>Dog Walking Services</Heading>
+                <Heading as={"h3"}>Dog Walking</Heading>
                 <p>
-                  Lorem ipsum dolor sit amet consdicta facere saepe dolore natus
-                  et nam, perferendis at rem.
+                Energize your pup's day with our reliable Dog Walking Services, keeping tails wagging and spirits high
                 </p>
               </div>
 
               <div className="service" onClick={()=>navigate('/services/0')}>
                 <img src={veternary} alt="" />
-                <Heading as={"h3"}>Puppy-Sitting Services</Heading>
+                <Heading as={"h3"}>Puppy-Sitting</Heading>
                 <p>
-                  Lorem ipsum dolor sit amet cona numquam dicta facere saepe
-                  dolore natus et nam, perferendis at rem.
+                Give your furry bundle of joy the best care with our attentive Puppy-Sitting services, ensuring a playful and safe experience
                 </p>
               </div>
             </div>
