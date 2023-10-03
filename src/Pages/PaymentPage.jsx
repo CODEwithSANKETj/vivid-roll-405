@@ -20,6 +20,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { empty } from "../Redux/Prod_redux/actions";
+import Footer from "../Components/Footer";
 export const Paymentpage = () => {
   const [email, setemail] = useState(false);
   const [otp, setotp] = useState("");
@@ -87,7 +88,8 @@ export const Paymentpage = () => {
   const initialRef = useRef(null);
   const finalRef = useRef(null);
   return (
-    <DIV>
+    <div>
+      <DIV>
       <div className="maincontainer" style={{ paddingTop: "50px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Checkout</h1>
         <div className="container">
@@ -398,12 +400,15 @@ export const Paymentpage = () => {
         </div>
       </div>
     </DIV>
+    <Footer/>
+    </div>
   );
 };
 
 const DIV = styled.div`
   background-color: #f8e7e7;
   height: fit-content;
+  padding-bottom: 50px;
   html {
     font-size: 14px;
   }

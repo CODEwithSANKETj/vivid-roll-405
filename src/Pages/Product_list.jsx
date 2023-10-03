@@ -14,6 +14,7 @@ import { addToCart } from '../Redux/Prod_redux/actions'
 import store from '../Redux/store'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Skeleton, Spinner } from '@chakra-ui/react'
+import Footer from '../Components/Footer';
 function Product_list() {
   const toast = useToast();
 
@@ -197,6 +198,7 @@ function Product_list() {
               emptyColor="gray.200"
               color="pink.500"
               size="xl"
+              marginLeft='300px'
             />
           ) : (
             data.length > 0 &&
@@ -249,6 +251,7 @@ function Product_list() {
           Next
         </PaginationButton>
       </Pagination>
+      <Footer/>
     </Main_Div>
   );
 }

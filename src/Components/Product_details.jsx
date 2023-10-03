@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import store from '../Redux/store';
 import { addToCart, calculate, changequantity } from '../Redux/Prod_redux/actions';
 import { useToast } from '@chakra-ui/react';
+import Footer from './Footer';
 function ProductDetails() {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const toast = useToast();
@@ -78,17 +79,21 @@ function ProductDetails() {
   //console.log(quantity);
   return (
     
-    <Div>
+    <div>
+      <Div>
       <Left_div>
        
         <MainImageContainer >
           
         {data ? <Img src={`${data.image}`}/>: <Spinner
+        
   thickness='4px'
   speed='0.65s'
   emptyColor='gray.200'
   color='blue.500'
   size='xl'
+  marginLeft='300px'
+  marginTop='100px'
 />}
           </MainImageContainer>
           
@@ -101,6 +106,8 @@ function ProductDetails() {
   emptyColor='gray.200'
   color='blue.500'
   size='xl'
+  marginRight='600px'
+  marginTop='100px'
 /> :<Right_div>
           <ProductTitle>{data.title}</ProductTitle>
           <Price>Rs. {data.price}</Price>
@@ -130,7 +137,10 @@ function ProductDetails() {
           </Logo_text>
         </Right_div>}
       </div>
+      
     </Div>
+    <Footer/>
+    </div>
   );
 }
 const ProductTitle = styled.h1`
@@ -219,7 +229,7 @@ const Img = styled.img`
   height: 110%;
   align-items: center;
   margin-left: 100px;
-  border: 1px solid brown;
+  //border: 1px solid brown;
 `;
 
 const Div = styled.div`
