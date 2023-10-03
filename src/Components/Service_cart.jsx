@@ -10,6 +10,7 @@ import { Card, CardHeader, CardBody,Image,Stack,Heading,Text,Button, CardFooter,
 import "../CSS/service.css";
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const Service_cart = ({title,id,image,details,price}) => {
@@ -25,6 +26,7 @@ const Service_cart = ({title,id,image,details,price}) => {
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
 
+  const navigate=useNavigate();
    const [name,setName]=useState("");
    const [date,setDate]=useState("");
    const [location,setLocation]=useState("");
@@ -51,6 +53,7 @@ const Service_cart = ({title,id,image,details,price}) => {
             duration: 9000,
             isClosable: true,
           })
+          navigate("/")
       } catch (error) {
             console.log(error)
             toast({
