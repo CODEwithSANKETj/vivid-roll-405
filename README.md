@@ -63,7 +63,7 @@ For any inquiries or support, you can reach us at below emails:
 
 | Animated Components | ABOUT |
 |:-------------------:|:-----:|
-| ![Animated Components](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/services.png) | ![ABOUT]([[https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/85db0f67-ed6b-4b75-8755-54a004b6b1c2](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)) |
+| ![Animated Components](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/services.png) | ![ABOUT]([[https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)) |
 
 | SERVICES Page | SERVICES > PET CARE |
 |:-------------:|:------------------:|
