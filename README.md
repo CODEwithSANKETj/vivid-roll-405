@@ -49,7 +49,7 @@ Contributions to PAALTOO.com are welcome! If you have any ideas or improvements,
 For any inquiries or support, you can reach us at below emails:
 [saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).
 [jaiswalsanket9404@gmail.com](mailto:jaiswalsanket9404@gmail.com).
-[saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).//Akshay
+[akshay.ramoliya9@gmail.com](mailto:akshay.ramoliya9@gmail.com).//Akshay
 [saurabh.r.maske@gmail.com](mailto:saurabh.r.maske@gmail.com).//Chetan
  
 
