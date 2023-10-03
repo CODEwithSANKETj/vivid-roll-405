@@ -63,7 +63,7 @@ For any inquiries or support, you can reach us at below emails:
 
 | Animated Components | ABOUT |
 |:-------------------:|:-----:|
-| ![Animated Components](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/services.png) | ![ABOUT]([[https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)) |
+| ![Animated Components](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/services.png) | ![ABOUT](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png) |
 
 | SERVICES Page | SERVICES > PET CARE |
 |:-------------:|:------------------:|
