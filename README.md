@@ -73,13 +73,11 @@ For any inquiries or support, you can reach us at below emails:
 |:-----------:|:-----------:|
 | ![ALL PRODUCTS](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/appoitment%20booking.png) | ![PRODUCT CARD](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/products.png) |
 
-| BOOKINGS PAGE | PAYMENT CARD |
-|:-------------:|:------------:|
-| ![BOOKINGS PAGE](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/5932061a-f0ff-46d8-9666-a2983b4c8f1f) | ![PAYMENT CARD](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/de091178-d6c3-4a67-8777-f39897a41784)  |
 
-| LOGIN / USER SIGNUP | DOCTOR SIGNUP |
-|:-------------------:|:-------------:|
-| ![LOGIN/ USER SIGNUP](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/login_signup.png) | ![DOCTOR SIGNUP](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/8cb9e938-91dd-4c2e-8e15-2289513b4290) |
+
+| LOGIN / USER SIGNUP | 
+|:-------------------:|
+| ![LOGIN/ USER SIGNUP](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/login_signup.png) | 
 
 | PAYMENT PAGE | GETTING OTP |
 |:------------------:|:------------------:|
