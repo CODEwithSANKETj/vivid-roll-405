@@ -63,7 +63,7 @@ For any inquiries or support, you can reach us at below emails:
 
 | Animated Components | ABOUT |
 |:-------------------:|:-----:|
-| ![Animated Components](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/services.png) | ![ABOUT]([https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/85db0f67-ed6b-4b75-8755-54a004b6b1c2](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)) |
+| ![Animated Components](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/services.png) | ![ABOUT]([[https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/85db0f67-ed6b-4b75-8755-54a004b6b1c2](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/about.png)) |
 
 | SERVICES Page | SERVICES > PET CARE |
 |:-------------:|:------------------:|
@@ -71,19 +71,19 @@ For any inquiries or support, you can reach us at below emails:
 
 | ALL PRODUCTS | PRODUCT CARD |
 |:-----------:|:-----------:|
-| ![ALL PRODUCTS](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/appoitment%20booking.png) | ![PRODUCT CARD](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/prod_details.png) |
+| ![ALL PRODUCTS](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/appoitment%20booking.png) | ![PRODUCT CARD](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/products.png) |
 
 | BOOKINGS PAGE | PAYMENT CARD |
 |:-------------:|:------------:|
 | ![BOOKINGS PAGE](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/5932061a-f0ff-46d8-9666-a2983b4c8f1f) | ![PAYMENT CARD](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/de091178-d6c3-4a67-8777-f39897a41784)  |
 
-| PATIENT/ USER SIGNUP | DOCTOR SIGNUP |
+| LOGIN / USER SIGNUP | DOCTOR SIGNUP |
 |:-------------------:|:-------------:|
-| ![PATIENT/ USER SIGNUP](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/012ecbce-bb6f-4c74-a20d-fdf8ae24dbfc) | ![DOCTOR SIGNUP](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/8cb9e938-91dd-4c2e-8e15-2289513b4290) |
+| ![LOGIN/ USER SIGNUP](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/login_signup.png) | ![DOCTOR SIGNUP](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/8cb9e938-91dd-4c2e-8e15-2289513b4290) |
 
-| DOCTOR'S DASHBOARD | PATIENT'S DASHBOARD |
+| PAYMENT PAGE | GETTING OTP |
 |:------------------:|:------------------:|
-| ![DOCTOR'S DASHBOARD](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/313174b5-4e62-4f2e-a964-b96867d14fd7) | ![PATIENT'S DASHBOARD](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/7e1b5064-e539-4e2b-b264-6afb0b20e4bf)  |
+| ![PAYMENT PAGE](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/checkout.png) | ![GETTING OTP](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/otp%20verification.png)  |
 
 |DOCTOR'S PROFILE | UPDATE DOCTOR PROFILE |
 |:---------------:|:---------------------:|
