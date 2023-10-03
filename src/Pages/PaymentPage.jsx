@@ -21,6 +21,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { empty } from "../Redux/Prod_redux/actions";
 import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
 export const Paymentpage = () => {
   const [email, setemail] = useState(false);
   const [otp, setotp] = useState("");
@@ -90,6 +91,7 @@ export const Paymentpage = () => {
   const finalRef = useRef(null);
   return (
     <div>
+      <Navbar/>
       <DIV>
       <div className="maincontainer" style={{ paddingTop: "50px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Checkout</h1>

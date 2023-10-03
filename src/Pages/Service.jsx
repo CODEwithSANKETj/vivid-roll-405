@@ -6,6 +6,8 @@ import { Card, CardHeader, CardBody,Image,Stack,Heading,Text,Button,
 import "../CSS/service.css";
 import Service_cart from '../Components/Service_cart';
 import { useParams } from 'react-router-dom';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 
 const Service= () => {
@@ -35,6 +37,7 @@ const Service= () => {
 
   return (
     <div className='mainPage'>
+      <Navbar/>
       <div className='service-img'>
         <img src='https://www.fetchpetcare.com/wp-content/uploads/2023/08/hero.png'  />
       </div>
@@ -64,7 +67,7 @@ const Service= () => {
        
 
         
-       
+       <Footer/>
 
      
     </div>

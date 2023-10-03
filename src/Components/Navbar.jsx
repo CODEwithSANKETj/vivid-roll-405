@@ -36,7 +36,7 @@ function Navbar() {
           <HamburgerIcon onClick={() => setIsHamburgerOpen(true)} />
         </div>
 
-        <div className="logoSection" onClick={scrollToTop}>
+        <div className="logoSection" onClick={()=>navigate("/")}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
 
@@ -107,7 +107,7 @@ function Navbar() {
       </div>
 
       <div className="Navbar">
-        <div className="logoSection" onClick={scrollToTop}>
+        <div className="logoSection" onClick={()=>navigate("/")}>
           <img src={logo} alt="PAALTOO Logo" />
         </div>
         <div className="linksSection">

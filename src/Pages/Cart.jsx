@@ -4,6 +4,7 @@ import Cart_item from '../Components/Cart_item';
 import store from '../Redux/store';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
+import Navbar from '../Components/Navbar';
 export default function Cart() {
   const dispatch = useDispatch()
   const cartData = useSelector((store)=>store.cart);
@@ -13,7 +14,7 @@ export default function Cart() {
   
   return (
     <div className='App'>
-      
+      <Navbar/>
       <section class="bg-light my-5">
         <div class="container">
           <div class="row">
