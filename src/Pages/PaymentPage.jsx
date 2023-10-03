@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { empty } from "../Redux/Prod_redux/actions";
 import Footer from "../Components/Footer";
 export const Paymentpage = () => {
@@ -30,6 +30,7 @@ export const Paymentpage = () => {
   const dispatch = useDispatch()
   const location = useLocation();
   console.log(location , 'at payment');
+  const cartData = useSelector((store)=>store.cart);
   const handelcheckout = async () => {
     console.log(email);
     try {
@@ -104,11 +105,11 @@ export const Paymentpage = () => {
                     <h6 className="my-0">Final Price</h6>
                     <small className="text-muted">Brief description</small>
                   </div>
-                  <span className="text-muted">$12</span>
+                  <span className="text-muted">₹ {cartData.total_amount}.00</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                  <span>Total (USD)</span>
-                  <strong>$20</strong>
+                  <span>Total (INR)</span>
+                  <strong>₹ {cartData.total_amount}.00</strong>
                 </li>
               </ul>
               <form className="card p-2">
