@@ -57,7 +57,7 @@ For any inquiries or support, you can reach us at below emails:
 
 ## UI Screenshots
 
-|  HOMEPAGE - Doctor Toggle OFF |  HOMEPAGE - Doctor Toggle ON |
+|  HOMEPAGE |
 |:-----------------------------:|:---------------------------:|
 | ![HOMEPAGE](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/Home.png) |
 
