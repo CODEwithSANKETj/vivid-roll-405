@@ -8,6 +8,7 @@ import store from '../Redux/store';
 import { addToCart, calculate, changequantity } from '../Redux/Prod_redux/actions';
 import { useToast } from '@chakra-ui/react';
 import Footer from './Footer';
+import Navbar from './Navbar';
 function ProductDetails() {
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const toast = useToast();
@@ -80,6 +81,7 @@ function ProductDetails() {
   return (
     
     <div>
+      <Navbar/>
       <Div>
       <Left_div>
        
