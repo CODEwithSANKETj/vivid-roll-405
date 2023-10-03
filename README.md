@@ -85,8 +85,5 @@ For any inquiries or support, you can reach us at below emails:
 |:------------------:|:------------------:|
 | ![PAYMENT PAGE](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/checkout.png) | ![GETTING OTP](https://github.com/CODEwithSANKETj/vivid-roll-405/blob/main/SS/otp%20verification.png)  |
 
-|DOCTOR'S PROFILE | UPDATE DOCTOR PROFILE |
-|:---------------:|:---------------------:|
-| ![image](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/16121010-7c30-4f51-aa57-59a74447daa3) | ![image](https://github.com/mrsaurabhmaske/resolute-mountain-5021/assets/123891687/6f29baf3-9cf9-4c1c-b587-efe38eb012f3) |
 
 |:----------------------------------------------------------------------------------------------------------------------------------------------------:|
