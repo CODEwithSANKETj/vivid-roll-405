@@ -91,7 +91,9 @@ export const Paymentpage = () => {
   const finalRef = useRef(null);
   return (
     <div>
+
       <Navbar/>
+
       <DIV>
       <div className="maincontainer" style={{ paddingTop: "50px" }}>
         <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Checkout</h1>

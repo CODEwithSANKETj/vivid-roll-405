@@ -85,7 +85,7 @@ function Home() {
 
               <div className="service" onClick={()=>navigate('/services/1')}>
                 <img src={petgrooming} alt="" />
-                <Heading as={"h3"}>Service 3</Heading>
+                <Heading as={"h3"}>Dog Walking Services</Heading>
                 <p>
                   Lorem ipsum dolor sit amet consdicta facere saepe dolore natus
                   et nam, perferendis at rem.
@@ -94,7 +94,7 @@ function Home() {
 
               <div className="service" onClick={()=>navigate('/services/0')}>
                 <img src={veternary} alt="" />
-                <Heading as={"h3"}>Service 4</Heading>
+                <Heading as={"h3"}>Puppy-Sitting Services</Heading>
                 <p>
                   Lorem ipsum dolor sit amet cona numquam dicta facere saepe
                   dolore natus et nam, perferendis at rem.
