@@ -14,7 +14,9 @@ export default function Cart() {
   
   return (
     <div className='App'>
-       <Navbar/>
+
+      <Navbar/>
+
       <section class="bg-light my-5">
         <div class="container">
           <div class="row">

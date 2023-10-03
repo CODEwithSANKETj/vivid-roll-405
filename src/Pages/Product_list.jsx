@@ -258,7 +258,7 @@ function Product_list() {
         </PaginationButton>
       </Pagination>
 
-      <Footer/>
+      {/* <Footer/> */}
     
 
       </Main_Div>
