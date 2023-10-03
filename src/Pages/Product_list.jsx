@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useToast } from "@chakra-ui/react";
-
 import dog_pic from "../Images/Dog.png";
 import bird_pic from "../Images/bird.png";
 import toys_pic from "../Images/toys.png";
 import cart_pic from "../Images/cart.png";
 import cat_pic from "../Images/cat.png";
-import puppyDiv from "../Images/puppy-div.png";
+import doglookingaway from "../Images/doglookingaway.png";
+import doglookingatme from "../Images/doggylookingatme.png";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../Redux/Prod_redux/actions";
 import { Link, useSearchParams } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
 
+import useSound from "use-sound";
+import buttonHoverSound from "../Sound/barkingDog.mp3";
+
 import ConditionalNavbar from "../Components/ContitionalNavbar";
 
 function Product_list() {
   const toast = useToast();
+
+  const [play] = useSound(buttonHoverSound);
 
   let [data, setdata] = useState([]);
   let [refresh, setrefresh] = useState(true);
@@ -187,8 +192,8 @@ function Product_list() {
                 <option value="VET LIFE">VET LIFE</option>
               </Select>
             </FilterSection>
-            <div className="PuppyDiv">
-              <img src={puppyDiv} alt="" />
+            <div className="PuppyDiv" onMouseEnter={play}>
+              <img src={doglookingaway} alt="" />
             </div>
           </Product_filter_div>
           {/* --------------------------Filter Section Ends */}
@@ -321,7 +326,6 @@ const Product_detail = styled.div`
   align-items: center;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-color: ;
 `;
 
 const Product_img = styled.img`
@@ -340,8 +344,6 @@ const Product_item_div = styled.div`
   align-items: center;
   justify-content: center;
   align-self: center;
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
 `;
 const Filter_icon = styled.img`
   width: 20px;
@@ -424,18 +426,22 @@ const Product_filter_div = styled.div`
     margin-left: 3rem;
     transform: scale(1.7);
     filter: drop-shadow(0px 0px 5px rgb(226, 233, 132));
-    transition: all 0.3s ease;
+    transition: all 1s ease;
+    width: 16rem;
+    bottom: 2rem;
+    position: fixed;
   }
 
   .PuppyDiv:hover {
+    content: url(${doglookingatme});
     filter: drop-shadow(0px 0px 40px rgb(226, 233, 132));
     margin-left: 4rem;
-    transform: scale(2);
   }
 `;
 const Product_div = styled.div`
   margin-left: 16%;
   padding: 30px 50px;
+  min-height: 80vh;
 `;
 
 const Filter_Ribbon = styled.div`
@@ -448,6 +454,7 @@ const Filter_Ribbon = styled.div`
 
 const Main_Div = styled.div`
   background-color: #f1e1e1;
+  min-height: 90vh;
 `;
 
 const Pagination = styled.div`

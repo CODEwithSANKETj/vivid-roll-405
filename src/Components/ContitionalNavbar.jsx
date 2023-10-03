@@ -2,7 +2,7 @@ import { Button, Heading } from "@chakra-ui/react";
 import logo from "../Images/logo.png";
 import shoppingcart from "../Images/shopping-cart.gif";
 import wishlisticon from "../Images/wishlist-icon.gif";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGOUT } from "../Redux/action_types";
@@ -15,6 +15,8 @@ function ConditionalNavbar() {
   console.log(isAuthenticated, "navbar");
 
   const auth = useSelector((store) => store.auth.isAuth);
+
+  const location = useLocation();
 
   const logout = () => {
     dispatch({ type: LOGOUT });
@@ -45,7 +47,10 @@ function ConditionalNavbar() {
 
       <div className="nav-buttons">
         {!auth ? (
-          <Button onClick={() => navigate("/login")} colorScheme="orange">
+          <Button
+            onClick={() => navigate("/login", { state: { from: location } })}
+            colorScheme="orange"
+          >
             Login
           </Button>
         ) : (
