@@ -2,13 +2,10 @@ import { useSelector } from "react-redux";
 import "../CSS/Cart.css";
 import Cart_item from "../Components/Cart_item";
 import { useNavigate } from "react-router-dom";
-import Footer from "../Components/Footer";
 import ConditionalNavbar from "../Components/ContitionalNavbar";
-import { Button } from "bootstrap";
 export default function Cart() {
   const cartData = useSelector((store) => store.cart);
   const navigate = useNavigate();
-  console.log(cartData.cart);
   let data = cartData.cart;
 
   return (
@@ -21,12 +18,17 @@ export default function Cart() {
             <div className="col-lg-9">
               <div className="card border shadow-0">
                 <div className="m-4">
-                  <h4 className={`card-title text-center ${!data.length && "h1"}  mb-5`}>Your Shopping Cart { data.length?"":"is Empty!"}</h4>
+                  <h4
+                    className={`card-title text-center ${
+                      !data.length && "h1"
+                    }  mb-5`}
+                  >
+                    Your Shopping Cart {data.length ? "" : "is Empty!"}
+                  </h4>
                   {/* All items appended here from the cart data * */}
-                  {
-                    data.map((item, index) => {
-                      return <Cart_item key={index} item={item} />;
-                    })}
+                  {data.map((item, index) => {
+                    return <Cart_item key={index} item={item} />;
+                  })}
                 </div>
 
                 <div className="border-top pt-4 mx-4 mb-4">
@@ -122,11 +124,12 @@ export default function Cart() {
           </div>
         </div>
         <div className="flex text-center">
-        <button className="btn btn-primary my-5 mx-5" onClick={() => navigate("/allproducts")}>{`Add ${!data.length?"Some":"more"} Products`}</button>
+          <button
+            className="btn btn-primary my-5 mx-5"
+            onClick={() => navigate("/allproducts")}
+          >{`Add ${!data.length ? "Some" : "more"} Products`}</button>
         </div>
-
       </section>
-
     </div>
   );
 }
