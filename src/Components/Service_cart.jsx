@@ -91,8 +91,7 @@ const Service_cart = ({title,id,image,details,price}) => {
         variant='outline'
         >
           <Image
-            objectFit='cover'
-            width={500}
+            objectFit='cover' 
             src={image}
             alt='Caffe Latte'
           />
@@ -107,9 +106,13 @@ const Service_cart = ({title,id,image,details,price}) => {
             </CardBody>
 
             <CardFooter className='card_footer'>
-              <Button className='button' onClick={onOpen} variant='solid' colorScheme='teal' size='lg'>
+              <Button className='button' onClick={onOpen} variant='solid' colorScheme='orange' size='lg'>
                 Book Service
-              </Button>
+            </Button>
+            <Button className='button' onClick={()=>window.history.back()} variant='solid' colorScheme='teal' size='lg'>
+                Go to Services
+            </Button>
+
                         <Modal
                   initialFocusRef={initialRef}
                   finalFocusRef={finalRef}
@@ -155,7 +158,7 @@ const Service_cart = ({title,id,image,details,price}) => {
 
                     <ModalFooter>
                       <Button onClick={handleBooking} colorScheme='blue' mr={3}>
-                        process to book
+                        Proceed to book
                       </Button>
                       <Button onClick={onClose}>Cancel</Button>
                     </ModalFooter>

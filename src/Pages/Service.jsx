@@ -42,12 +42,12 @@ const Service= () => {
 
       <Navbar/>
 
-      <div className='service-img'>
+      {/* <div className='service-img'>
         <img src='https://www.fetchpetcare.com/wp-content/uploads/2023/08/hero.png'  />
-      </div>
+      </div> */}
 
-      <div>
-          <Heading className='heading' >Pet Care Services</Heading>
+      <div className='serviceDetailsSection'>
+          <Heading className='mheading' >Pet Care Services</Heading>
           <Text id='main_text' py='2' fontSize='xl'>At PAALTOO, we serve pets of every type, age, and phase of life because we truly love animals. We show it with every belly rub, long walk, scratch behind the ear, and treat we give. We’d love to be your trusted sidekick for a healthy and happy pet because we know we can deliver trusted, quality care and a professional, stress-free experience for you.</Text>
       </div>
       { loading ? ( 
@@ -62,9 +62,7 @@ const Service= () => {
                       />
                       ):(
                         
-                          // data.map((item)=>(
-                          //     <Service_cart key={item._id} {...item}/>
-                          // ))
+
                           <Service_cart {...data[id]}/>
                       
                       )}

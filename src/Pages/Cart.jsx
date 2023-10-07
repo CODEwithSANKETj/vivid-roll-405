@@ -4,6 +4,7 @@ import Cart_item from "../Components/Cart_item";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer";
 import ConditionalNavbar from "../Components/ContitionalNavbar";
+import { Button } from "bootstrap";
 export default function Cart() {
   const cartData = useSelector((store) => store.cart);
   const navigate = useNavigate();
@@ -15,14 +16,14 @@ export default function Cart() {
       <ConditionalNavbar />
 
       <section className="bg-light my-5">
-        <div className="container">
+        <div className="container ">
           <div className="row">
             <div className="col-lg-9">
               <div className="card border shadow-0">
                 <div className="m-4">
-                  <h4 className="card-title mb-4">Your shopping cart</h4>
+                  <h4 className={`card-title text-center ${!data.length && "h1"}  mb-5`}>Your Shopping Cart { data.length?"":"is Empty!"}</h4>
                   {/* All items appended here from the cart data * */}
-                  {data.length > 0 &&
+                  {
                     data.map((item, index) => {
                       return <Cart_item key={index} item={item} />;
                     })}
@@ -120,11 +121,12 @@ export default function Cart() {
             </div>
           </div>
         </div>
+        <div className="flex text-center">
+        <button className="btn btn-primary my-5 mx-5" onClick={() => navigate("/allproducts")}>{`Add ${!data.length?"Some":"more"} Products`}</button>
+        </div>
+
       </section>
 
-      <section>
-        <Footer />
-      </section>
     </div>
   );
 }
