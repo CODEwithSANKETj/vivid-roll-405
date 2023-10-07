@@ -11,8 +11,6 @@ function ConditionalNavbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartData = useSelector((store) => store.cart);
-  const isAuthenticated = useSelector((store) => store.auth.isAuth);
-  console.log(isAuthenticated, "navbar");
 
   const auth = useSelector((store) => store.auth.isAuth);
 

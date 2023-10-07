@@ -29,7 +29,6 @@ const LoginSignup = () => {
 
   const handelsignup = (e) => {
     e.preventDefault();
-    console.log(signupdata);
     const auth = dispatch(signup(signupdata));
     if (auth) {
       navigate("/");
@@ -39,7 +38,6 @@ const LoginSignup = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // console.log(logindata);
     if (logindata.email == "admin@gmail.com") {
       if (logindata.password == "avengers") {
         navigate("/admin");

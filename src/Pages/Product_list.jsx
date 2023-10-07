@@ -47,7 +47,7 @@ function Product_list() {
   //////////////////////////
   const dispatch = useDispatch();
   const cartData = useSelector((store) => store.cart);
-  console.log(cartData);
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -129,12 +129,11 @@ function Product_list() {
       queryParams.append("category", category);
     }
     const queryString = queryParams.toString();
-    console.log(queryString);
     axios
       .get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/?${queryString}`)
       .then((res) => {
         setisloading(false);
-        console.log(res.data.total);
+        // console.log(res.data.total);
         setTotalItems(res.data.total);
         setdata(res.data.data);
       })
@@ -428,7 +427,7 @@ const Product_filter_div = styled.div`
     filter: drop-shadow(0px 0px 5px rgb(226, 233, 132));
     transition: all 1s ease;
     width: 30vh;
-    height:30vh;
+    height: 30vh;
     bottom: 2rem;
     position: fixed;
   }

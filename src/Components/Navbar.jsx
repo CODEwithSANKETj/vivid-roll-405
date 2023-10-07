@@ -28,8 +28,6 @@ function Navbar() {
   const navigate = useNavigate();
   const cartData = useSelector((store) => store.cart);
   const isAuthenticated = useSelector((store) => store.auth.isAuth);
-  console.log(isAuthenticated, "navbar");
-  //console.log(cartData.cart);
 
   const auth = useSelector((store) => store.auth.isAuth);
 

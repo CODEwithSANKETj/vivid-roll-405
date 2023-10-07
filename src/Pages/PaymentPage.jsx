@@ -30,10 +30,10 @@ export const Paymentpage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location, "at payment");
   const cartData = useSelector((store) => store.cart);
+  const authData = useSelector((store) => store.auth);
+
   const handelcheckout = async () => {
-    console.log(email);
     try {
       const res = await axios.post(
         "https://dark-pink-rabbit-wear.cyclic.cloud/service/request_otp",
@@ -50,7 +50,6 @@ export const Paymentpage = () => {
   };
 
   const handelverify = async () => {
-    console.log(email);
     try {
       const res = await axios.post(
         "https://dark-pink-rabbit-wear.cyclic.cloud/service/verify_otp",
@@ -64,6 +63,7 @@ export const Paymentpage = () => {
           isClosable: true,
         });
       } else {
+        handleAddOrder();
         dispatch(empty());
         onClose();
         toast({
@@ -83,6 +83,22 @@ export const Paymentpage = () => {
         status: "error",
         isClosable: true,
       });
+    }
+  };
+
+  const handleAddOrder = async () => {
+    try {
+      await axios.post(
+        "https://dark-pink-rabbit-wear.cyclic.cloud/product/order",
+        { cartArr: cartData.cart },
+        {
+          headers: {
+            Authorization: `Bearer ${authData.token}`, // Add your token here
+          },
+        }
+      );
+    } catch (error) {
+      console.log(error);
     }
   };
 
