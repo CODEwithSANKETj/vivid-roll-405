@@ -7,26 +7,36 @@ import axios from "axios";
 import AdminMainNavbar from "./AdminMainNavbar";
 
 function AdminProducts() {
-  // const { productsData, loading, error } = store;
-  const [sorting, setSorting] = useState("");
-  const [searching, setSearching] = useState("Search here");
-
   const [allProducts, setAllProducts] = useState([]);
+  console.log("rendered",allProducts)
 
   const getAllProducts = async () => {
     try {
       let res = await axios.get(
         "https://dark-pink-rabbit-wear.cyclic.cloud/product/"
       );
-      setAllProducts(res.data.data);
+      setAllProducts(()=>res.data.data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  function sortingFunction(e) { 
+    const sorting = e.target.value;
+    let sorted = allProducts.slice();
+    if(sorting === "asc"){
+      sorted = sorted.sort((a, b) => a.price - b.price);
+    }
+    if(sorting === "desc"){
+      sorted = sorted.sort((a, b) => b.price - a.price)
+    }
+    console.log(sorted);
+    setAllProducts((prev)=>sorted);
+  }
+
   useEffect(() => {
     getAllProducts();
-  }, []);
+  },[]);
 
   return (
     <Box pb={"50px"}>
@@ -39,7 +49,7 @@ function AdminProducts() {
               <input placeholder="Search..."   />
             </div>
             <div className="sortingSection">
-              <select name="sorting"  id="sorting">
+              <select name="sorting"  onChange={sortingFunction}>
                 <option value="">Sort By Price</option>
                 <option value="asc">Low To High</option>
                 <option value="desc">High To Low</option>

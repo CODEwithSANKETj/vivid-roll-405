@@ -174,7 +174,7 @@ function Product_list() {
           {/* ---------------------Filter Section Insite Products Div */}
           <Product_filter_div>
             <FilterSection>
-              <FilterLabel>Filter by Price:</FilterLabel>
+              <FilterLabel>Sort by Price:</FilterLabel>
               <Select onChange={sort}>
                 <option value="">Select</option>
                 <option value="Asc">Asc</option>
@@ -427,7 +427,8 @@ const Product_filter_div = styled.div`
     transform: scale(1.7);
     filter: drop-shadow(0px 0px 5px rgb(226, 233, 132));
     transition: all 1s ease;
-    width: 16rem;
+    width: 30vh;
+    height:30vh;
     bottom: 2rem;
     position: fixed;
   }

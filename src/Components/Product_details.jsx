@@ -160,9 +160,11 @@ const Desc = styled.p`
   `
 const MainImageContainer = styled.div`
   position: relative;
+  transition: all 0.5s  ;
   overflow: hidden;
   &:hover {
     cursor: zoom-in;
+    scale: 1.2;
   }
 `
 MainImageContainer
@@ -219,7 +221,6 @@ const Logo_text = styled.div`
 const Logo_Container = styled.div`
   width: 80%;
   height: 50px;
-  
   display: flex;
   margin: auto;
   margin-top: 10px;
@@ -231,16 +232,16 @@ const Img = styled.img`
   height: 110%;
   align-items: center;
   margin-left: 100px;
-  //border: 1px solid brown;
 `;
 
 const Div = styled.div`
   display: flex;
+  padding: 10vh;
 `;
 
-const Left_div = styled.div`
-  border: 1px solid grey;
+const Left_div = styled.div`  
   width: 90%;
+
 `;
 
 const Right_div = styled.div`
@@ -276,12 +277,10 @@ const QuantityDisplay = styled.div`
 
 const ButtonsContainer = styled.div`
   display: flex; /* Add this line to make the buttons align horizontally */
-
   width: 80%;
   gap: 10px;
   margin-top: 20px;
-  
-  
+  padding-bottom  :30px; ;
 `;
 
 const BuyNowButton = styled.button`

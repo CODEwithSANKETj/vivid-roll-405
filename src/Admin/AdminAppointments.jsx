@@ -36,7 +36,7 @@ function AdminAppointments() {
           <div className="adminOptions">
             <div className="sortingSection">
               <select >
-                <option value="">Sort By Price</option>
+                <option value="">Sort By Fees</option>
                 <option value="asc">Low To High</option>
                 <option value="desc">High To Low</option>
               </select>

@@ -41,7 +41,7 @@ function AdminUsers() {
             </div>
             <div className="sortingSection">
               <select name="sorting" id="sorting">
-                <option value="">Sort By Name</option>
+                <option value="">Filter by Type</option>
                 <option value="asc">A to Z</option>
                 <option value="desc">Z to A</option>
               </select>

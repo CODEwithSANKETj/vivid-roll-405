@@ -366,6 +366,17 @@ export const Paymentpage = () => {
                   >
                     Continue to checkout
                   </button>
+                  <button
+                    className="btn btn-primary btn-lg btn-block"
+                    type="button"
+                    style={{
+                      backgroundColor: "#14770d",
+                      border: "none",
+                    }}
+                    onClick={() => navigate("/cart")}
+                  >
+                    Go to cart
+                  </button>
                   <Modal
                     initialFocusRef={initialRef}
                     finalFocusRef={finalRef}
