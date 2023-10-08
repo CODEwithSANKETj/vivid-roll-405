@@ -9,7 +9,7 @@ Welcome to PAALTOO..., the ultimate destination for pet owners who want the best
 ### Experience PAALTOO
 
 <div align="center">
-  <a href="https://vivid-roll-405-4t7beorta-codewithsanketj.vercel.app/">Visit Paaltoo.com</a>
+  <a href="https://vivid-roll-405.vercel.app/">Visit Paaltoo.com</a>
 </div>
 
 ## Features
