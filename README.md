@@ -4,7 +4,7 @@
   <img src="src/Images/logo.png" alt="PAALTOO Logo" background0color="white">
 </div>
 # Project Description
-Welcome to PAALTOO..., the ultimate destination for pet owners who want the best for their furry companions. Our user-friendly PetCare website is designed to make caring for your pets a breeze.
+Welcome to PAALTOO... the ultimate destination for pet owners who want the best for their furry companions. Our user-friendly PetCare website is designed to make caring for your pets a breeze.
 
 ### Experience PAALTOO
 
