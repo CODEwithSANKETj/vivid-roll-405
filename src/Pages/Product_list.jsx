@@ -130,7 +130,7 @@ function Product_list() {
     }
     const queryString = queryParams.toString();
     axios
-      .get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/?${queryString}`)
+      .get(`https://paaltoo-backend.onrender.com/product/?${queryString}`)
       .then((res) => {
         setisloading(false);
         // console.log(res.data.total);

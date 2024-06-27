@@ -36,7 +36,7 @@ export const Paymentpage = () => {
   const handelcheckout = async () => {
     try {
       const res = await axios.post(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/service/request_otp",
+        "https://paaltoo-backend.onrender.com/service/request_otp",
         { email: email }
       );
       if (res.error) {
@@ -52,7 +52,7 @@ export const Paymentpage = () => {
   const handelverify = async () => {
     try {
       const res = await axios.post(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/service/verify_otp",
+        "https://paaltoo-backend.onrender.com/service/verify_otp",
         { otp: otp }
       );
       if (res.error) {
@@ -89,7 +89,7 @@ export const Paymentpage = () => {
   const handleAddOrder = async () => {
     try {
       await axios.post(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/product/order",
+        "https://paaltoo-backend.onrender.com/product/order",
         { cartArr: cartData.cart },
         {
           headers: {

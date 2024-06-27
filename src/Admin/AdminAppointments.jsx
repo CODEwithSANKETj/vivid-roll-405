@@ -14,7 +14,7 @@ function AdminAppointments() {
   const getAllAppointments = async () => {
     try {
       let res = await axios.get(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/service/getappointment"
+        "https://paaltoo-backend.onrender.com/service/getappointment"
       );
       console.log(res.data);
       setAllAppointments(res.data.data);

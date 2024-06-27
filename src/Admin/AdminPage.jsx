@@ -10,7 +10,7 @@ const AdminPage = () => {
   const [allorders,setAllorders] = useState([]);
 const getAllOrders = async () => {
   try {
-    let res = await axios.get("https://dark-pink-rabbit-wear.cyclic.cloud/product/getorder");
+    let res = await axios.get("https://paaltoo-backend.onrender.com/product/getorder");
     console.log(res.data);
     setAllorders(res.data);
 
