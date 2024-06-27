@@ -13,7 +13,7 @@ function AdminProducts() {
   const getAllProducts = async () => {
     try {
       let res = await axios.get(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/product/"
+        "https://paaltoo-backend.onrender.com/product/"
       );
       setAllProducts(()=>res.data.data);
     } catch (error) {

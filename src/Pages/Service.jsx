@@ -32,7 +32,7 @@ const Service = () => {
   const getData = async () => {
     setLoading(true);
     await axios
-      .get("https://dark-pink-rabbit-wear.cyclic.cloud/service_provider/get")
+      .get("https://paaltoo-backend.onrender.com/service_provider/get")
       .then((res) => {
         setData(res.data);
         setLoading(false);

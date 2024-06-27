@@ -16,7 +16,7 @@ function AdminUsers() {
   const getAllUsers = async () => {
     try {
       let res = await axios.get(
-        "https://dark-pink-rabbit-wear.cyclic.cloud/users/getusers"
+        "https://paaltoo-backend.onrender.com/users/getusers"
       );
       console.log(res.data)
       setAllUsers(res.data.allusers);

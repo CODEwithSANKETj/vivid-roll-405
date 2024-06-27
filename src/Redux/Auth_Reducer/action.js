@@ -5,7 +5,7 @@ export const login = (details) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
     const res = await axios.post(
-      "https://dark-pink-rabbit-wear.cyclic.cloud/users/login",
+      "https://paaltoo-backend.onrender.com/users/login",
       details
     );
     if (res.error) {
@@ -25,7 +25,7 @@ export const signup = (details) => async (dispatch) => {
   try {
     dispatch({ type: "LOGIN_REQUEST" });
     const res = await axios.post(
-      "https://dark-pink-rabbit-wear.cyclic.cloud/users/signup",
+      "https://paaltoo-backend.onrender.com/users/signup",
       details
     );
     if (res.error) {

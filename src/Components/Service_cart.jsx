@@ -56,7 +56,7 @@ const Service_cart = ({ title, id, image, details, price }) => {
     if (name !== "" && date !== "" && location !== "" && type !== "") {
       try {
         await axios.post(
-          "https://dark-pink-rabbit-wear.cyclic.cloud/service/register",
+          "https://paaltoo-backend.onrender.com/service/register",
           service,
           {
             headers: {

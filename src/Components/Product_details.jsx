@@ -55,7 +55,7 @@ function ProductDetails() {
   useEffect(() => {
     //dispatch(calculate())
     axios
-      .get(`https://dark-pink-rabbit-wear.cyclic.cloud/product/`)
+      .get(`https://paaltoo-backend.onrender.com/product/`)
       .then((res) => {
         let data = res.data.data;
         const product = data.find((p) => p._id === id);
